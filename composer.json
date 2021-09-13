@@ -1,0 +1,45 @@
+{
+    "name": "defstudio/laravel-tools",
+    "description": "A collection of laravel tools made by def:studio team",
+    "type": "library",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fabio Ivona",
+            "email": "fabio.ivona@defstudio.it",
+            "homepage": "https://defstudio.it",
+            "role": "Developer"
+        },
+        {
+            "name": "Daniele Romeo",
+            "email": "danieleromeo@defstudio.it",
+            "homepage": "https://defstudio.it",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^8.0",
+        "defstudio/supercharged-carbon": "^0.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "DefStudio\\Tools\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DefStudio\\Tools\\ServiceProvider"
+            ]
+        }
+    }
+}
