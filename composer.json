@@ -22,8 +22,8 @@
     "require": {
         "php": "^8.0",
         "illuminate/support": "^8.0",
-        "defstudio/supercharged-carbon": "dev-main",
-        "defstudio/blade-compiler": "dev-master",
+        "defstudio/supercharged-carbon": "dev-master",
+        "defstudio/blade-compiler": "dev-main",
         "spatie/laravel-ray": "^1.25"
     },
     "require-dev": {
