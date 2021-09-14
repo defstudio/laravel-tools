@@ -11,8 +11,8 @@
         'bg-white',
         'sm:p-6',
         'shadow',
-        'sm:rounded-md',
-        'sm:rounded-tl-md sm:rounded-tr-md' => isset($actions)
+        'sm:rounded-bl-md sm:rounded-br-md' => !isset($actions),
+        'sm:rounded-tl-md sm:rounded-tr-md' => !isset($header),
     ])>
         {{$slot}}
     </div>
