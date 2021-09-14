@@ -2,16 +2,22 @@
 
 namespace DefStudio\Tools;
 
+use DefStudio\Tools\View\Components\Button;
 use DefStudio\Tools\View\Components\Card;
 use DefStudio\Tools\View\Components\Container;
+use DefStudio\Tools\View\Components\Dialog;
+use DefStudio\Tools\View\Components\Modal;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     public function boot()
     {
         $this->loadViewComponentsAs(config('tools.tags_prefix', ''), [
+            Button::class,
             Card::class,
             Container::class,
+            Modal::class,
+            Dialog::class,
         ]);
 
         $this->loadViewsFrom(__DIR__."/../resources/views", 'tools');
