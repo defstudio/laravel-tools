@@ -1,4 +1,3 @@
-
 <div
     x-data="{
         show: @entangle($attributes->wire('model')).defer,
@@ -51,14 +50,22 @@
          x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
          x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
 
-        @isset($title)
-            <div class="text-lg">
-                {{ $title }}
+        <div class="px-6 py-4">
+            @isset($title)
+                <div class="text-lg">
+                    {{ $title }}
+                </div>
+            @endisset
+
+            <div class="mt-4">
+                {{ $slot }}
+            </div>
+        </div>
+
+        @isset($footer)
+            <div class="px-6 py-4 bg-gray-100 flex">
+                {{ $footer }}
             </div>
         @endisset
-
-        <div class="mt-4">
-            {{ $slot }}
-        </div>
     </div>
 </div>

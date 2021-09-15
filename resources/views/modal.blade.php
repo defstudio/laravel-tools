@@ -1,19 +1,19 @@
-<x-modal :id="$id" :maxWidth="$maxWidth" {{ $attributes }}>
-    <div class="px-6 py-4">
-        @isset($title)
-            <x-slot name="title">
-                {{ $title }}
-            </x-slot>
-        @endisset
+<x-dialog :id="$id" :maxWidth="$maxWidth" {{ $attributes }}>
 
-        <div class="mt-4">
-            {{ $slot }}
-        </div>
+    @isset($title)
+        <x-slot name="title">
+            {{ $title }}
+        </x-slot>
+    @endisset
+
+    <div class="mt-4">
+        {{ $slot }}
     </div>
 
+
     @isset($footer)
-        <div class="px-6 py-4 bg-gray-100 flex flex-row-reverse">
+        <x-slot name="footer">
             {{ $footer }}
-        </div>
+        </x-slot>
     @endisset
-</x-modal>
+</x-dialog>
