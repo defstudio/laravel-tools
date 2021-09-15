@@ -12,21 +12,6 @@ class Modal extends \Illuminate\View\Component
         public string|null $id = null,
         public string|null $maxWidth = null,
     ) {
-
-        if ($this->id === null) {
-            /** @var \Illuminate\View\ComponentAttributeBag $attributes */
-            $attributes = $this->data()['attributes'];
-            $this->id = md5($attributes->wire('model'));
-        }
-
-        $this->maxWidth ??= '2xl';
-        $this->maxWidth = match ($this->maxWidth) {
-            'sm' => 'sm:max-w-sm',
-            'md' => 'sm:max-w-md',
-            'lg' => 'sm:max-w-lg',
-            'xl' => 'sm:max-w-xl',
-            '2xl' => 'sm:max-w-2xl',
-        };
     }
 
     public function render(): Factory|View|Application
