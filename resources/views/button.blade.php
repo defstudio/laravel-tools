@@ -7,8 +7,16 @@ $color_classes = match ($color) {
 }
 ?>
 
-<button type="{{$type}}" {{ $attributes->merge([
+@if($type == 'link')
+    <a {{ $attributes->merge([
     'class' => "inline-flex items-center px-4 py-2 border rounded-md font-semibold text-xs uppercase tracking-widest focus:outline-none focus:ring disabled:opacity-25 transition $color_classes"
 ]) }}>
-    {{ $slot }}
-</button>
+        {{ $slot }}
+    </a>
+@else
+    <button type="{{$type}}" {{ $attributes->merge([
+    'class' => "inline-flex items-center px-4 py-2 border rounded-md font-semibold text-xs uppercase tracking-widest focus:outline-none focus:ring disabled:opacity-25 transition $color_classes"
+]) }}>
+        {{ $slot }}
+    </button>
+@endif
