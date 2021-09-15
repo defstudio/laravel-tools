@@ -49,6 +49,15 @@
          x-transition:leave="ease-in duration-200"
          x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
          x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-        {{ $slot }}
+
+        @isset($title)
+            <div class="text-lg">
+                {{ $title }}
+            </div>
+        @endisset
+
+        <div class="mt-4">
+            {{ $slot }}
+        </div>
     </div>
 </div>
