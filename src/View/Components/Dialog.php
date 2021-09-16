@@ -10,7 +10,8 @@ class Dialog extends \Illuminate\View\Component
 {
     public function __construct(
         public string|null $id = null,
-        public string|null $maxWidth = null,
+        public string|null $maxWidth = '2xl',
+        public string|null $color = 'none',
     ) {
 
         if ($this->id === null) {
@@ -18,15 +19,6 @@ class Dialog extends \Illuminate\View\Component
             $attributes = $this->data()['attributes'];
             $this->id = md5($attributes->wire('model'));
         }
-
-        $this->maxWidth ??= '2xl';
-        $this->maxWidth = match ($this->maxWidth) {
-            'sm' => 'sm:max-w-sm',
-            'md' => 'sm:max-w-md',
-            'lg' => 'sm:max-w-lg',
-            'xl' => 'sm:max-w-xl',
-            '2xl' => 'sm:max-w-2xl',
-        };
     }
 
     public function render(): Factory|View|Application
