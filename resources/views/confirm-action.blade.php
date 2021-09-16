@@ -19,7 +19,7 @@
             {{ $abortText }}
         </x-button>
 
-        <x-button class="ml-2" wire:click="confirmation_given" wire:loading.attr="disabled">
+        <x-button class="ml-auto" wire:click="confirmation_given" wire:loading.attr="disabled">
             {{$confirmText}}
         </x-button>
     </x-slot>
