@@ -11,6 +11,7 @@ class Modal extends \Illuminate\View\Component
     public function __construct(
         public string|null $id = null,
         public string|null $maxWidth = null,
+        public string $color = 'none',
     ) {
     }
 

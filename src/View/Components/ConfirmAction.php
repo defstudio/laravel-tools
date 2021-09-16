@@ -10,10 +10,11 @@ use Illuminate\View\Component;
 class ConfirmAction extends Component
 {
     public function __construct(
-        public $title = 'Confirm',
-        public $content = 'Do you really want it?',
-        public $confirmText = 'Confirm',
-        public $abortText = 'No, Abort'
+        public string $title = 'Confirm',
+        public string $content = 'Do you really want it?',
+        public string $confirmText = 'Confirm',
+        public string $abortText = 'No, Abort',
+        public string $color = 'none',
     ) {
     }
 

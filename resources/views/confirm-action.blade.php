@@ -11,7 +11,7 @@
 </span>
 
 @once
-    <x-modal wire:model="confirming_action">
+    <x-modal wire:model="confirming_action" :color="$color">
         <x-slot name="title">{{$title}}</x-slot>
         {{$content}}
         <x-slot name="footer">

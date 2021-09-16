@@ -1,4 +1,4 @@
-<x-dialog :id="$id" :maxWidth="$maxWidth" {{ $attributes }}>
+<x-dialog :id="$id" :maxWidth="$maxWidth" :color="$color" {{ $attributes }}>
 
     @isset($title)
         <x-slot name="title">
