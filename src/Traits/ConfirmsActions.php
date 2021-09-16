@@ -5,7 +5,7 @@ namespace DefStudio\Tools\Traits;
 /**
  * @mixin \Livewire\Component
  */
-trait ConfirmActions
+trait ConfirmsActions
 {
     public bool $confirming_action = false;
     public string|null $confirmable_id = null;
