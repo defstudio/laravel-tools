@@ -4,6 +4,7 @@ namespace DefStudio\Tools;
 
 use DefStudio\Tools\View\Components\Button;
 use DefStudio\Tools\View\Components\Card;
+use DefStudio\Tools\View\Components\ConfirmAction;
 use DefStudio\Tools\View\Components\Container;
 use DefStudio\Tools\View\Components\Dialog;
 use DefStudio\Tools\View\Components\Icon;
@@ -16,6 +17,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->loadViewComponentsAs(config('tools.tags_prefix', ''), [
             Button::class,
             Card::class,
+            ConfirmAction::class,
             Container::class,
             Icon::class,
             Modal::class,
