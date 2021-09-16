@@ -6,6 +6,7 @@ use DefStudio\Tools\View\Components\Button;
 use DefStudio\Tools\View\Components\Card;
 use DefStudio\Tools\View\Components\Container;
 use DefStudio\Tools\View\Components\Dialog;
+use DefStudio\Tools\View\Components\Icon;
 use DefStudio\Tools\View\Components\Modal;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
@@ -16,6 +17,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             Button::class,
             Card::class,
             Container::class,
+            Icon::class,
             Modal::class,
             Dialog::class,
         ]);
