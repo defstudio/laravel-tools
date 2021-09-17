@@ -11,6 +11,7 @@ class Button extends \Illuminate\View\Component
     public function __construct(
         public string $type = 'button',
         public string $color = 'primary',
+        public string $size = 'normal',
     ) {
     }
 

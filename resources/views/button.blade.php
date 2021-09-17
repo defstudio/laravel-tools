@@ -8,7 +8,12 @@ $color_classes = match ($color) {
     'danger' =>    'bg-red-600    border-transparent       text-white      hover:bg-red-500                      focus:border-red-700   focus:ring-red-200     active:bg-red-600',
 };
 
-$class = "inline-flex items-center      px-4 py-2        border rounded-md         font-semibold text-xs uppercase        tracking-widest       focus:outline-none focus:ring      disabled:opacity-25 transition $color_classes";
+$size_classes = match ($size){
+    'sm' => 'px-1 py-1',
+    default => 'px-4 py-2'
+}
+
+$class = "inline-flex items-center $size_classes border rounded-md font-semibold text-xs uppercase tracking-widest focus:outline-none focus:ring disabled:opacity-25 transition $color_classes";
 ?>
 
 @if($type == 'link')
