@@ -5,14 +5,19 @@ You can install this package via Composer:
 
 `composer require defstudio/laravel-tools`
 
+
 ## Setup
 
 ### Publishing Assets
 
+[TODO]
 
+### Dev dependencies installation
+additionally, you can install our opinionated dev dependencies for laravel projects
 
-### Composer Scripts
-Add the following scripts to composer.json
+`composer require --dev defstudio/laravel-dev-dependencies`
+
+and add the following scripts to composer.json
 
 ```
 "php-cs-fixer": "php-cs-fixer fix -v --config=./.php-cs-fixer.php",
