@@ -1,23 +1,23 @@
-<?php
+<?php /** @noinspection PhpUnhandledExceptionInspection */
 
 use App\Models\User;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 
 if (!function_exists('user')) {
-    function user(): User|null
+    function user(): User
     {
-        return Auth::user();
+        $user = Auth::user();
+
+        if($user === null){
+            throw new AuthorizationException("User not authenticated");
+        }
+
+        return $user;
     }
 }
 
 if (!function_exists('str')) {
-    /**
-     * Get a new stringable object from the given string.
-     *
-     * @param  string|\Illuminate\Support\Stringable  $string  $string
-     *
-     * @return \Illuminate\Support\Stringable
-     */
     function str(null|string|\Illuminate\Support\Stringable $string): \Illuminate\Support\Stringable
     {
         return \Illuminate\Support\Str::of($string ?? '');
