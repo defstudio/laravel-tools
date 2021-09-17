@@ -1,5 +1,6 @@
 <?php
 /** @var string $color */
+/** @var string $size */
 
 
 $color_classes = match ($color) {
@@ -11,7 +12,7 @@ $color_classes = match ($color) {
 $size_classes = match ($size){
     'sm' => 'px-1 py-1',
     default => 'px-4 py-2'
-}
+};
 
 $class = "inline-flex items-center $size_classes border rounded-md font-semibold text-xs uppercase tracking-widest focus:outline-none focus:ring disabled:opacity-25 transition $color_classes";
 ?>
