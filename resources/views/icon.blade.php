@@ -1,1 +1,1 @@
-<span {{$attributes}}>@include("tools::icons.$set.$style.$name")</span>
+<span {{$attributes}}>@include("tools::icons.$vendor.$set.$name")</span>

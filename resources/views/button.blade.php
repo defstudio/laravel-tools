@@ -14,19 +14,32 @@ $size_classes = match ($size) {
     default => 'px-4 py-2'
 };
 
-$class = "inline-flex items-center $size_classes border rounded-md font-semibold text-xs uppercase tracking-widest focus:outline-none focus:ring disabled:opacity-25 transition $color_classes";
+$class = "relative inline-flex items-center $size_classes border rounded-md font-semibold text-xs uppercase tracking-widest focus:outline-none focus:ring disabled:opacity-25 transition $color_classes";
+
+
+if ($attributes->wire('loading.spinner')->value === true) {
+    $wire_loading_spin = $attributes->wire('click')->value;
+}
+
+
 ?>
 
 @if($type == 'link')
-    <a {{ $attributes->merge([
-    'class' => $class
-]) }}>
-        {{ $slot }}
+    <a {{ $attributes->merge(['class' => $class]) }}>
+        @if(!empty($wire_loading_spin))
+            <span wire:loading.flex @if($wire_loading_spin!='all') wire:target="{{$wire_loading_spin}}" @endif  class="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+                 <x-icon class="animate-spin" vendor="fontawesome" set="solid" name="spinner"/>
+            </span>
+        @endif
+        <span @if(!empty($wire_loading_spin)) wire:loading.class="opacity-0" @if($wire_loading_spin!='all') wire:target="{{$wire_loading_spin}}" @endif @endif >{{ $slot }}</span>
     </a>
 @else
-    <button type="{{$type}}" {{ $attributes->merge([
-    'class' => $class
-]) }}>
-        {{ $slot }}
+    <button type="{{$type}}" {{ $attributes->merge(['class' => $class]) }}>
+        @if(!empty($wire_loading_spin))
+            <span wire:loading.flex @if($wire_loading_spin!='all') wire:target="{{$wire_loading_spin}}" @endif  class="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+                 <x-icon class="animate-spin" vendor="fontawesome" set="solid" name="spinner"/>
+            </span>
+        @endif
+        <span @if(!empty($wire_loading_spin)) wire:loading.class="opacity-0" @if($wire_loading_spin!='all') wire:target="{{$wire_loading_spin}}" @endif @endif >{{ $slot }}</span>
     </button>
 @endif

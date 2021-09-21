@@ -11,8 +11,8 @@ class Icon extends Component
 {
     public function __construct(
         public string $name,
-        public string $set = 'heroicons',
-        public string $style = 'outline',
+        public string $vendor = 'heroicons',
+        public string $set = 'outline',
     ) {
     }
 
