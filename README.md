@@ -24,7 +24,9 @@ and add the following scripts to composer.json
 "lint": "@php-cs-fixer",
 "test:lint": "@php-cs-fixer --dry-run",
 "test:types": "php ./vendor/bin/phpstan analyse --ansi --memory-limit=-1",
+"test:mutation": "./vendor/bin/infection --test-framework=pest --show-mutations",
 "test": "php ./vendor/bin/pest --colors=always --parallel",
+"update:snapshots": "php ./vendor/bin/pest --colors=always -d --update-snapshots",
 "test:all": [
     "@test:lint",
     "@test:types",
