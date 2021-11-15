@@ -9,6 +9,7 @@ use DefStudio\Tools\View\Components\Container;
 use DefStudio\Tools\View\Components\Dialog;
 use DefStudio\Tools\View\Components\Icon;
 use DefStudio\Tools\View\Components\Modal;
+use DefStudio\Tools\View\Components\TextArea;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -19,9 +20,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             Card::class,
             ConfirmAction::class,
             Container::class,
+            Dialog::class,
             Icon::class,
             Modal::class,
-            Dialog::class,
+            TextArea::class,
         ]);
 
         $this->loadViewsFrom(__DIR__."/../resources/views", 'tools');
