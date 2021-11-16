@@ -10,7 +10,7 @@ use Illuminate\Support\HtmlString;
 class ButtonContent extends \Illuminate\View\Component
 {
     public function __construct(
-        public bool $wireLoadingSpin,
+        public string $wireLoadingSpin,
         public string $icon,
     ) {
     }

@@ -18,6 +18,6 @@ class Icon extends Component
 
     public function render(): Factory|View|Application
     {
-        return view("tools::icon");
+        return view("tools::icons.$this->vendor.$this->set.$this->name");
     }
 }
