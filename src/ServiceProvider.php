@@ -3,11 +3,13 @@
 namespace DefStudio\Tools;
 
 use DefStudio\Tools\View\Components\Button;
+use DefStudio\Tools\View\Components\ButtonContent;
 use DefStudio\Tools\View\Components\Card;
 use DefStudio\Tools\View\Components\ConfirmAction;
 use DefStudio\Tools\View\Components\Container;
 use DefStudio\Tools\View\Components\Dialog;
 use DefStudio\Tools\View\Components\Icon;
+use DefStudio\Tools\View\Components\Link;
 use DefStudio\Tools\View\Components\Modal;
 use DefStudio\Tools\View\Components\TextArea;
 
@@ -17,11 +19,13 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->loadViewComponentsAs(config('tools.tags_prefix', ''), [
             Button::class,
+            ButtonContent::class,
             Card::class,
             ConfirmAction::class,
             Container::class,
             Dialog::class,
             Icon::class,
+            Link::class,
             Modal::class,
             TextArea::class,
         ]);
