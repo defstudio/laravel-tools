@@ -1,4 +1,4 @@
-<div x-data="{
+<div {{$attributes}} x-data="{
             show:{{$collapsed?'false':'true'}},
     }">
     @if(isset($header))
