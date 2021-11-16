@@ -7,5 +7,5 @@ if ($attributes->wire('loading.spinner')->value === true) {
 ?>
 
 <a {{ $attributes->merge(['class' => $base_class()]) }}>
-    <x-button-content :wire-loading-spin="$wire_loading_spin??''">{{$slot}}</x-button-content>
+    <x-button-content :wire-loading-spin="$wire_loading_spin??''" :icon="$icon">{{$slot}}</x-button-content>
 </a>
