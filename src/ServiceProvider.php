@@ -11,6 +11,7 @@ use DefStudio\Tools\View\Components\Dialog;
 use DefStudio\Tools\View\Components\Icon;
 use DefStudio\Tools\View\Components\Link;
 use DefStudio\Tools\View\Components\Modal;
+use DefStudio\Tools\View\Components\Select;
 use DefStudio\Tools\View\Components\TextArea;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
@@ -27,6 +28,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             Icon::class,
             Link::class,
             Modal::class,
+            Select::class,
             TextArea::class,
         ]);
 
