@@ -2,10 +2,9 @@
 
 <span
     {{$attributes}}
-    x-ref="span"
     x-data
     x-on:click="$wire.start_confirming_action('{{ $confirmable_id }}')"
-    x-on:action-confirmed.window="setTimeout(() => $event.detail.id === '{{$confirmable_id}}' && $refs.span.dispatchEvent(new CustomEvent('then', { bubbles: false })), 250);"
+    x-on:action-confirmed.window="setTimeout(() => $event.detail.id === '{{$confirmable_id}}' && $el.dispatchEvent(new CustomEvent('then', { bubbles: false })), 250);"
 >
     {{$slot}}
 </span>
