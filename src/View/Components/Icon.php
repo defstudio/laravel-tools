@@ -13,6 +13,7 @@ class Icon extends Component
         public string $name,
         public string $vendor = 'heroicons',
         public string $set = 'outline',
+        public string $size = '6'
     ) {
     }
 
