@@ -27,6 +27,7 @@ and add the following scripts to composer.json
 "test:mutation": "./vendor/bin/infection --test-framework=pest --show-mutations",
 "test": "php ./vendor/bin/pest --colors=always --parallel",
 "update:snapshots": "php ./vendor/bin/pest --colors=always -d --update-snapshots",
+"coverage": "php ./vendor/bin/pest --coverage",
 "test:all": [
     "@test:lint",
     "@test:types",
