@@ -21,7 +21,7 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/support": "^8.0",
+        "illuminate/support": "^8.0 || ^9.0",
         "defstudio/supercharged-carbon": "dev-master",
         "defstudio/blade-compiler": "dev-main",
         "spatie/laravel-ray": "^1.25"
