@@ -3,7 +3,7 @@
 <span
     {{$attributes}}
     x-data
-    x-on:click="$wire.start_confirming_action('{{ $confirmable_id }}', {{!empty($requiresPassword)}})"
+    x-on:click="$wire.start_confirming_action('{{ $confirmable_id }}', {{ $requiresPassword ? 'true' : 'false')}})"
     x-on:action-confirmed.window="setTimeout(() => $event.detail.id === '{{$confirmable_id}}' && $el.dispatchEvent(new CustomEvent('then', { bubbles: false })), 250);"
 >
     {{$slot}}
