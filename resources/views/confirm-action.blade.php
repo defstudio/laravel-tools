@@ -17,7 +17,7 @@
         @if($requiresPassword)
             <div class="mt-4">
                 <label class="block font-medium text-sm text-gray-700">{{$requiresPassword}}</label>
-                <input type="text"
+                <input type="password"
                        class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                        autocomplete="none"
                        wire:model.defer="password_confirmation"
