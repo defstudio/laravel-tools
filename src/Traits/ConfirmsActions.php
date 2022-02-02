@@ -54,7 +54,7 @@ trait ConfirmsActions
         
         return $guard->validate([
             'email' => $user->email,
-            'password' => $password,
+            'password' => $this->password_confirmation,
         ]);
     }
 }
