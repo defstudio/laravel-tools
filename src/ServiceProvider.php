@@ -11,6 +11,7 @@ use DefStudio\Tools\View\Components\Dialog;
 use DefStudio\Tools\View\Components\Icon;
 use DefStudio\Tools\View\Components\Link;
 use DefStudio\Tools\View\Components\Modal;
+use DefStudio\Tools\View\Components\Number;
 use DefStudio\Tools\View\Components\Select;
 use DefStudio\Tools\View\Components\Text;
 use DefStudio\Tools\View\Components\TextArea;
@@ -29,21 +30,22 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             Icon::class,
             Link::class,
             Modal::class,
+            Number::class,
             Select::class,
             Text::class,
             TextArea::class,
         ]);
 
-        $this->loadViewsFrom(__DIR__."/../resources/views", 'tools');
+        $this->loadViewsFrom(__DIR__ . "/../resources/views", 'tools');
 
-        $this->mergeConfigFrom(__DIR__."/../config/tools.php", 'tools');
+        $this->mergeConfigFrom(__DIR__ . "/../config/tools.php", 'tools');
 
         $this->publishes([
-            __DIR__."/../resources/views" => resource_path('views/vendor/tools'),
+            __DIR__ . "/../resources/views" => resource_path('views/vendor/tools'),
         ], 'views');
 
         $this->publishes([
-            __DIR__."/../config/tools.php" => config_path('tools.php'),
+            __DIR__ . "/../config/tools.php" => config_path('tools.php'),
         ], 'config');
     }
 }
