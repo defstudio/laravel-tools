@@ -1,7 +1,7 @@
 <div {{$attributes}}>
     @if($label)
         <label for="{{$id}}" class='block font-medium text-sm text-gray-700'>
-            $label
+            {{$label}}
         </label>
     @endif
 
