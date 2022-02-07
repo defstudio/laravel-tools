@@ -23,6 +23,6 @@ class Text extends Component
 
     public function render(): Factory|View|Application
     {
-        return view('tools::text-area');
+        return view('tools::text');
     }
 }
