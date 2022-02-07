@@ -29,6 +29,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             Link::class,
             Modal::class,
             Select::class,
+            Text::class,
             TextArea::class,
         ]);
 
