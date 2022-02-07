@@ -6,7 +6,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
-class WireModelComponent extends Component
+abstract class WireModelComponent extends Component
 {
     public function __construct(
         public string|null $id = null,
@@ -29,6 +29,6 @@ class WireModelComponent extends Component
 
     protected function component_name(): string
     {
-        return basename(static::class);
+        return strtolower(ltrim(preg_replace('/([A-Z])/', '-\\1', class_basename(static::class)), '-'));
     }
 }
