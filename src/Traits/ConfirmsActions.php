@@ -44,7 +44,7 @@ trait ConfirmsActions
     
     public function confirm_password(): bool
     {
-        if(!this->requires_password){
+        if(!$this->requires_password){
             return true;
         }
         
