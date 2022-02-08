@@ -3,19 +3,31 @@
 
 use Illuminate\View\ComponentAttributeBag;
 
-if ($attributes->wire('loading.spinner')->value) {
-    $wire_loading_spin = $attributes->wire('click')->value;
-}
+$wire_loading_disabled = $attributes->wire('loading.disable')->value;
+$attributes            = $attributes->except('wire:loading.disable');
 
-if ($attributes->wire('loading.disabled')->value) {
-    $wire_loading_disabled = $attributes->wire('click')->value;
+if (!empty($wire_loading_disabled)) {
+    $attributes = $attributes->merge(['wire:loading.attr' => 'disabled']);
+
+    if ($wire_loading_disabled === true) {
+        $wire_loading_target = $attributes->wire('click')->value;
+
+    }
+
+    if (!empty($wire_loading_disabled)) {
+        $wire_loading_target = $wire_loading_disabled;
+    }
+
+    if (!empty($wire_loading_target)) {
+        $attributes = $attributes->merge(['wire:loading.target' => $wire_loading_target]);
+    }
 }
 ?>
 
-<button type="{{$type}}" {{ $attributes->merge(['class' => $base_class()]) }}>
-    <x-button-content
-        :wireLoadingSpin="$wire_loading_spin??''"
-        @if($wire_loading_disabled) wire:loading.attr="disabled" @endif
-        :icon="$icon">{{$slot}}</x-button-content>
+<button type="{{$type}}"
+    {{ $attributes->merge(['class' => $base_class()])}}>
+    @if(!empty($icon))
+        <x-icon wire:loading.remove wire:target="{!! $wireLoadingSpin !!}" :name="$icon"/>
+    @endif
+    {{ $slot }}
 </button>
-
