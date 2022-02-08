@@ -1,5 +1,5 @@
 <div {{$attributes}}>
-    @if($label)
+    @if(!empty($label))
         <label for="{{$id}}" class='block font-medium text-sm text-gray-700'>
             {{$label}}
         </label>
@@ -13,7 +13,7 @@
 
     @if($model)
         @error($model)
-            <p class='text-sm text-red-600 mt-2'>{{ $message }}</p>
+        <p class='text-sm text-red-600 mt-2'>{{ $message }}</p>
         @enderror
     @endif
 

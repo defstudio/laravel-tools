@@ -9,10 +9,10 @@ use Illuminate\View\Component;
 abstract class WiredInputComponent extends Component
 {
     public function __construct(
-        public string|null $id = null,
-        public string|null $label = null,
+        public ?string $id = null,
+        public ?string $label = null,
         public bool $defer = false,
-        public string|null $model = null,
+        public ?string $model = null,
     ) {
         if(empty($this->id)){
             $this->id = $this->model ?? str($this->component_name())->append('-input-', Str::orderedUuid());
