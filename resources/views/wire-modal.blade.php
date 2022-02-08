@@ -12,7 +12,7 @@
     </div>
 
     @if(!empty($actions))
-        <div class="mt-6 flex flex-row-reverse align-content-between">
+        <div class="mt-6 flex flex-row-reverse justify-between">
             @if(is_array($actions))
                 @foreach($actions as $label => $action)
                     <x-button wire:click="{{$action}}" wire:loading.disable>{{$label}}</x-button>
