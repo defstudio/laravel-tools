@@ -6,7 +6,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
-abstract class WireModelComponent extends Component
+abstract class WiredInputComponent extends Component
 {
     public function __construct(
         public string|null $id = null,

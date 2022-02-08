@@ -11,6 +11,7 @@ class ButtonContent extends \Illuminate\View\Component
 {
     public function __construct(
         public string $wireLoadingSpin,
+        public string $wireLoadingDisabled,
         public string $icon,
     ) {
     }
