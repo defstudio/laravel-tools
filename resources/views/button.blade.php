@@ -11,10 +11,7 @@ if (!empty($wire_loading_disabled)) {
 
     if ($wire_loading_disabled === true) {
         $wire_loading_target = $attributes->wire('click')->value;
-
-    }
-
-    if (!empty($wire_loading_disabled)) {
+    }else if ($wire_loading_disabled !== 'all') {
         $wire_loading_target = $wire_loading_disabled;
     }
 

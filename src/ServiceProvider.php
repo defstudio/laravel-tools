@@ -14,6 +14,7 @@ use DefStudio\Tools\View\Components\Number;
 use DefStudio\Tools\View\Components\Select;
 use DefStudio\Tools\View\Components\Text;
 use DefStudio\Tools\View\Components\TextArea;
+use DefStudio\Tools\View\Components\WireModal;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -32,6 +33,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             Select::class,
             Text::class,
             TextArea::class,
+            WireModal::class,
         ]);
 
         $this->loadViewsFrom(__DIR__ . "/../resources/views", 'tools');

@@ -25,7 +25,8 @@
         "defstudio/supercharged-carbon": "dev-master",
         "defstudio/blade-compiler": "dev-main",
         "spatie/laravel-ray": "^1.25",
-        "spatie/laravel-tail": "^4.4"
+        "spatie/laravel-tail": "^4.4",
+        "wire-elements/modal": "^1.0"
     },
     "require-dev": {
     },
