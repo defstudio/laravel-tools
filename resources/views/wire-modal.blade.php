@@ -7,11 +7,17 @@
         <div class="text-lg underline mb-4">{{$title}}</div>
     @endunless
 
-    <div @class(["md:grid md:grid-cols-$grid md:gap-6" => $grid])>
-    {{$slot}}
+    <div class="{{$grid ? "md:grid md:grid-cols-$grid md:gap-6" : ''}}">
+        {{$slot}}
     </div>
 
-    <div class="mt-6 flex">
-        <x-button class="ml-auto" wire:click="save" wire:loading.disable="all">Save</x-button>
+    <div class="mt-6 flex flex-row-reverse content-between">
+        @isset($buttons)
+            {{$buttons}}
+        @else
+            @foreach($actions as $label => $action)
+                <x-button wire:click="{{$action}}" wire:loading.disable>{{$label}}</x-button>
+            @endforeach
+        @endisset
     </div>
 </div>

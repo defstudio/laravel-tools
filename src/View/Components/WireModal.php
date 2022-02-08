@@ -12,6 +12,7 @@ class WireModal extends Component
     public function __construct(
         public string $title = '',
         public int $grid = 6,
+        public array $actions = ['Save' => 'save'],
     ) {
     }
 
