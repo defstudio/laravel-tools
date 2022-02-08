@@ -5,6 +5,7 @@ namespace DefStudio\Tools;
 use DefStudio\Tools\View\Components\Button;
 use DefStudio\Tools\View\Components\Card;
 use DefStudio\Tools\View\Components\ConfirmAction;
+use DefStudio\Tools\View\Components\ConfirmationModal;
 use DefStudio\Tools\View\Components\Container;
 use DefStudio\Tools\View\Components\Dialog;
 use DefStudio\Tools\View\Components\Icon;
@@ -15,6 +16,7 @@ use DefStudio\Tools\View\Components\Select;
 use DefStudio\Tools\View\Components\Text;
 use DefStudio\Tools\View\Components\TextArea;
 use DefStudio\Tools\View\Components\WireModal;
+use Livewire\Livewire;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -47,5 +49,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->publishes([
             __DIR__ . "/../config/tools.php" => config_path('tools.php'),
         ], 'config');
+
+        Livewire::component('confirmation-modal', ConfirmationModal::class);
     }
 }

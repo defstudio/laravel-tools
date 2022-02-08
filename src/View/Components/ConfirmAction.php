@@ -16,16 +16,15 @@ class ConfirmAction extends Component
         public string $abortText = 'No, Abort',
         public string $color = 'none',
         public string|bool $requiresPassword = '',
-    ) 
-    {
-        if($this->requiresPassword === true) {
+    ) {
+        if ($this->requiresPassword === true) {
             $this->requiresPassword = 'Please confirm your password to continue';
         }
-        
+
         if ($this->requiresPassword === false) {
             $this->requiresPassword = '';
         }
-       
+
     }
 
     public function render(): Factory|View|Application
