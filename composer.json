@@ -26,6 +26,7 @@
         "defstudio/blade-compiler": "dev-main",
         "spatie/laravel-ray": "^1.25",
         "spatie/laravel-tail": "^4.4",
+        "barryvdh/laravel-debugbar": "^3.6",
         "wire-elements/modal": "^1.0"
     },
     "require-dev": {
