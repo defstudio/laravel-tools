@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace DefStudio\Tools\Models;
 
@@ -43,7 +43,11 @@ class FakeableModel extends Model
         return true;
     }
 
-    public function forceDelete(): ?bool
+    /**
+     * @inheritDoc
+     * @noinspection PhpMissingReturnTypeInspection
+     */
+    public function forceDelete()
     {
         if (!self::$_fake) {
             return parent::forceDelete();
