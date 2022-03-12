@@ -21,15 +21,13 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/support": "^8.0 || ^9.0",
-        "defstudio/supercharged-carbon": "dev-master",
+        "barryvdh/laravel-debugbar": "^3.6",
         "defstudio/blade-compiler": "dev-main",
+        "defstudio/supercharged-carbon": "dev-master",
+        "illuminate/support": "^8.0 || ^9.0",
         "spatie/laravel-ray": "^1.25",
         "spatie/laravel-tail": "^4.4",
-        "barryvdh/laravel-debugbar": "^3.6",
         "wire-elements/modal": "^1.0"
-    },
-    "require-dev": {
     },
     "autoload": {
         "psr-4": {
@@ -48,5 +46,8 @@
                 "DefStudio\\Tools\\ServiceProvider"
             ]
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
     }
 }

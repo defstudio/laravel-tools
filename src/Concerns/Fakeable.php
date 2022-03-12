@@ -3,6 +3,8 @@
 namespace DefStudio\Tools\Concerns;
 
 use Illuminate\Database\Eloquent\Model;
+use function PHPUnit\Framework\assertFalse;
+use function PHPUnit\Framework\assertTrue;
 
 /**
  * @mixin Model
