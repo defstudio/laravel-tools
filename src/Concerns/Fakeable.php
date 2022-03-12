@@ -1,12 +1,13 @@
-<?php /** @noinspection PhpUnused */
+<?php
 
-namespace DefStudio\Tools\Models;
+namespace DefStudio\Tools\Concerns;
 
 use Illuminate\Database\Eloquent\Model;
-use function PHPUnit\Framework\assertFalse;
-use function PHPUnit\Framework\assertTrue;
 
-class FakeableModel extends Model
+/**
+ * @mixin Model
+ */
+trait Fakeable
 {
     private static bool $_fake = false;
 
