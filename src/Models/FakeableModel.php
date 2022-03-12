@@ -12,6 +12,8 @@ class FakeableModel extends Model
 
     private int $_times_saved = 0;
 
+    private bool $_forceDeleted = false;
+
     public static function fake(): void
     {
         self::$_fake = true;
@@ -41,6 +43,18 @@ class FakeableModel extends Model
         return true;
     }
 
+    public function forceDelete(): ?bool
+    {
+        if (!self::$_fake) {
+            return parent::forceDelete();
+        }
+
+        $this->exists = false;
+        $this->_forceDeleted = true;
+        return true;
+    }
+
+
     public function assertSaved(int $times = 1): void
     {
         $message = $times == 1
@@ -52,6 +66,11 @@ class FakeableModel extends Model
 
     public function assertDeleted(): void
     {
-        assertFalse($this->exists, sprintf("Failed asserting that [%s] doesn't exist in database", $this::class));
+        assertFalse($this->exists, sprintf("Failed asserting that [%s] was deleted", $this::class));
+    }
+
+    public function assertForceDeleted(): void
+    {
+        assertTrue($this->_forceDeleted, sprintf("Failed asserting that [%s] was force deleted", $this::class));
     }
 }
