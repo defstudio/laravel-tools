@@ -39,25 +39,13 @@ class FakeableModel extends Model
             return parent::delete();
         }
 
-        $this->exists = false;
-        return true;
-    }
-
-    /**
-     * @inheritDoc
-     * @noinspection PhpMissingReturnTypeInspection
-     */
-    public function forceDelete()
-    {
-        if (!self::$_fake) {
-            return parent::forceDelete();
+        if(property_exists($this, 'forceDeleting') && $this->forceDeleting){
+            $this->_forceDeleted = true;
         }
 
         $this->exists = false;
-        $this->_forceDeleted = true;
         return true;
     }
-
 
     public function assertSaved(int $times = 1): void
     {
