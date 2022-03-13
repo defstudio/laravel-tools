@@ -2,7 +2,7 @@
 
 /** @noinspection PhpUnused */
 
-namespace DefStudio\Tools\Concerns;
+namespace DefStudio\Tools\Concerns\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
