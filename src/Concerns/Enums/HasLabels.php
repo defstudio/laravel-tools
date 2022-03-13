@@ -5,9 +5,6 @@ namespace DefStudio\Tools\Concerns\Enums;
 use BackedEnum;
 use Illuminate\Support\Collection;
 
-/**
- * @mixin BackedEnum
- */
 trait HasLabels
 {
     /**
