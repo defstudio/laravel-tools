@@ -1,4 +1,6 @@
-<?php
+<?php /** @noinspection PhpUndefinedClassInspection */
+
+/** @noinspection PhpUnused */
 
 namespace DefStudio\Tools\Concerns;
 
@@ -11,7 +13,7 @@ use function PHPUnit\Framework\assertTrue;
  */
 trait Fakeable
 {
-    private static bool $_fake = false;
+    protected static bool $_fake = false;
 
     private int $_times_saved = 0;
 
@@ -42,7 +44,7 @@ trait Fakeable
             return parent::delete();
         }
 
-        if(property_exists($this, 'forceDeleting') && $this->forceDeleting){
+        if (property_exists($this, 'forceDeleting') && $this->forceDeleting) {
             $this->_forceDeleted = true;
         }
 

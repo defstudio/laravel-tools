@@ -59,6 +59,11 @@ trait Sortable
 
     public function move_up(): void
     {
+        if(property_exists(static::class, '_fake') && self::$_fake){
+            $this->position--;
+            return;
+        }
+
         $swap_with = $this->sort_query()
             ->orderBy('position', 'desc')
             ->where('position', '<', $this->getAttribute($this->sort_attribute))
@@ -75,6 +80,11 @@ trait Sortable
 
     public function move_down(): void
     {
+        if(property_exists(static::class, '_fake') && self::$_fake){
+            $this->position++;
+            return;
+        }
+
         $swap_with = $this->sort_query()
             ->orderBy('position')
             ->where('position', '>', $this->getAttribute($this->sort_attribute))
