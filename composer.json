@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": "^8.1",
         "barryvdh/laravel-debugbar": "^3.6",
         "defstudio/blade-compiler": "dev-main",
         "defstudio/supercharged-carbon": "dev-master",
