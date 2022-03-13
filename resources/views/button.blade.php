@@ -24,7 +24,7 @@ if (!empty($wire_loading_disabled)) {
 <button type="{{$type}}"
     {{ $attributes->merge(['class' => $base_class()])}}>
     @if(!empty($icon))
-        <x-icon :name="$icon"/>
+        <x-icon class="mr-2" :name="$icon"/>
     @endif
     {{ $slot }}
 </button>
