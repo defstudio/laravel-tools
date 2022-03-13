@@ -36,7 +36,7 @@ trait Fakeable
         return true;
     }
 
-    public function delete(): bool
+    public function delete(): bool|null
     {
         if (!self::$_fake) {
             return parent::delete();
