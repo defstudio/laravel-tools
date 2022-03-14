@@ -109,7 +109,7 @@ trait Sortable
             return;
         }
 
-        $this->save();
+        $this->saveQuietly();
     }
 
     public function recompute_sorting(): void
@@ -124,7 +124,7 @@ trait Sortable
                 }
 
                 $model->setAttribute($this->sort_attribute, $index + 1);
-                $model->save();
+                $model->saveQuietly();
             });
     }
 
@@ -136,7 +136,7 @@ trait Sortable
 
         $this->setAttribute($this->sort_attribute, $other_model_position);
 
-        $other_model->save();
-        $this->save();
+        $other_model->saveQuietly();
+        $this->saveQuietly();
     }
 }
