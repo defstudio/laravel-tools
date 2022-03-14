@@ -66,6 +66,11 @@ trait Fakeable
         assertFalse($this->exists, sprintf("Failed asserting that [%s] was deleted", $this::class));
     }
 
+    public function assertExists(): void
+    {
+        assertTrue($this->exists, sprintf("Failed asserting that [%s] exists", $this::class));
+    }
+
     public function assertForceDeleted(): void
     {
         assertTrue($this->_forceDeleted, sprintf("Failed asserting that [%s] was force deleted", $this::class));
