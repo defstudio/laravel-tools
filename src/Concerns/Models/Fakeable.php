@@ -24,6 +24,21 @@ trait Fakeable
         self::$_fake = true;
     }
 
+    public static function create(array $attributes = []): static
+    {
+        if (!self::$_fake) {
+            return parent::create($attributes);
+        }
+
+        $model = self::make($attributes);
+        $model->id ??= rand();
+
+        $model->_times_saved++;
+        $model->exists = true;
+
+        return $model;
+    }
+
     public function save(array $options = []): bool
     {
         if (!self::$_fake) {
