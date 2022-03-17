@@ -14,12 +14,13 @@
         @endif
         @foreach($options as $value => $label)
             @if(is_array($label))
-
-                <optgroup label="{{$value}}">
-                    @foreach($label as $suboption_value => $suboption_label)
-                        <option value="{{$suboption_value}}">{{$suboption_label}}</option>
-                    @endforeach
-                </optgroup>
+                @if(count($label) > 0)
+                    <optgroup label="{{$value}}">
+                        @foreach($label as $suboption_value => $suboption_label)
+                            <option value="{{$suboption_value}}">{{$suboption_label}}</option>
+                        @endforeach
+                    </optgroup>
+                @endif
             @else
                 <option value="{{$value}}">{{$label}}</option>
             @endif
