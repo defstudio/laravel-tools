@@ -10,6 +10,11 @@ class Classmap
     protected $composer;
     protected $base_path;
 
+    public static function make(): self
+    {
+        return new self();
+    }
+
     public function __construct()
     {
         $this->composer = require base_path('/vendor/autoloader');
