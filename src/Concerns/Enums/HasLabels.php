@@ -19,5 +19,8 @@ trait HasLabels
             ]);
     }
 
-    abstract public function label();
+    public function label(): string
+    {
+        return $this->value;
+    }
 }
