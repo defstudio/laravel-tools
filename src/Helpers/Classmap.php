@@ -19,7 +19,7 @@ class Classmap
 
     public function __construct()
     {
-        $this->composer = require base_path('/vendor/autoloader');
+        $this->composer = require base_path('vendor/autoload.php');
         $this->base_path = app_path();
     }
 
@@ -72,7 +72,7 @@ class Classmap
 
     protected function getFullyQualifiedClassNameFromFile(string $rootNamespace, SplFileInfo $file): string
     {
-        $class = trim(str_replace($this->basePath, '', (string)$file->getRealPath()), DIRECTORY_SEPARATOR);
+        $class = trim(str_replace($this->base_path, '', (string)$file->getRealPath()), DIRECTORY_SEPARATOR);
 
         $class = str_replace(
             [DIRECTORY_SEPARATOR, 'App\\'],
