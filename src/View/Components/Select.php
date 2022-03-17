@@ -2,10 +2,6 @@
 
 namespace DefStudio\Tools\View\Components;
 
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\View\Component;
 
 class Select extends WiredInputComponent
 {
@@ -16,8 +12,8 @@ class Select extends WiredInputComponent
         ?string $model = null,
         public iterable $options = [],
         public string $unselected = '',
-    )
-    {
+        public bool $wFull = true,
+    ) {
         parent::__construct($id, $label, $defer, $model);
     }
 }
