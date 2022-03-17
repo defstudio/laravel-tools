@@ -1,5 +1,7 @@
 <?php
 
+namespace DefStudio\Tools\Helpers;
+
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Symfony\Component\Finder\Finder;
