@@ -17,7 +17,6 @@
 
                 <optgroup label="{{$value}}">
                     @foreach($label as $suboption_value => $suboption_label)
-                        @ray($suboption_label)
                         <option value="{{$suboption_value}}">{{$suboption_label}}</option>
                     @endforeach
                 </optgroup>
