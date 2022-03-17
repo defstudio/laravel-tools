@@ -6,7 +6,7 @@ use ReflectionClass;
 
 trait CallsTraitMethods
 {
-    public function call_trait_method(string $method_name, array $params = []): void
+    public function call_trait_methods(string $method_name, array $params = []): void
     {
         $reflection = new ReflectionClass($this);
 
