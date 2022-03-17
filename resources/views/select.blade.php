@@ -1,5 +1,3 @@
-
-
 <div {{$attributes}}>
     @if(!empty($label))
         <label for="{{$id}}" class='block font-medium text-sm text-gray-700'>
@@ -15,7 +13,18 @@
             <option value="">{{$unselected}}</option>
         @endif
         @foreach($options as $value => $label)
-            <option value="{{$value}}">{{$label}}</option>
+            @if(is_array($label))
+
+                <optgroup label="{{$value}}">
+                    @foreach($label as $suboption_value => $suboption_label)
+                        @ray($suboption_label)
+                        <option value="{{$suboption_value}}">{{$suboption_label}}</option>
+                    @endforeach
+                </optgroup>
+            @else
+                <option value="{{$value}}">{{$label}}</option>
+            @endif
+
         @endforeach
     </select>
 
