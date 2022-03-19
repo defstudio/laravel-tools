@@ -33,6 +33,10 @@ trait Fakeable
         $this->id ??= rand();
 
         $this->_times_saved++;
+
+        if(!$this->exists){
+            $this->wasRecentlyCreated = true;
+        }
         $this->exists = true;
 
         return true;
