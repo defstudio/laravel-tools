@@ -118,11 +118,7 @@ trait Sortable
             ->orderBy($this->sort_attribute)
             ->get()
             ->values()
-            ->each(/** @phpstan-ignore-line */ function (self $model, int $index) {
-                if ($model->id === $this->id) {
-                    $this->setAttribute($this->sort_attribute, $index + 1);
-                }
-
+            ->each(function (self $model, int $index) {
                 $model->setAttribute($this->sort_attribute, $index + 1);
                 $model->saveQuietly();
             });
