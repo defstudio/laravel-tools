@@ -16,6 +16,10 @@ trait BackupsAttributes
         self::retrieved(function (self $model) {
             $model->_attributes_backup = $model->attributesToArray();
         });
+
+        self::created(function (self $model) {
+            $model->_attributes_backup = $model->attributesToArray();
+        });
     }
 
     public function get_backup(string $attribute): mixed
