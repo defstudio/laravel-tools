@@ -10,10 +10,12 @@ class Select extends WiredInputComponent
         ?string $label = null,
         bool $defer = false,
         ?string $model = null,
+        bool $wFull = true,
+        string $size = 'normal',
+        string $color = 'indigo',
         public iterable $options = [],
         public string $unselected = '',
-        public bool $wFull = true,
     ) {
-        parent::__construct($id, $label, $defer, $model);
+        parent::__construct($id, $label, $defer, $model, $size, $wFull, $color);
     }
 }
