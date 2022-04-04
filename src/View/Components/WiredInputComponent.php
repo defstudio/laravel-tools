@@ -44,12 +44,12 @@ abstract class WiredInputComponent extends Component
             ->push('block')
             ->when($this->wFull, fn (Collection $classes) => $classes->push('w-full'))
             ->push("border-gray-300 focus:border-$this->color-300")
-            ->push('focus:ring focus:ring-$this->color-200 focus:ring-opacity-50')
+            ->push("focus:ring focus:ring-$this->color-200 focus:ring-opacity-50")
             ->push('rounded-md')
             ->push('shadow-sm')
             ->push(match ($this->size) {
                 'sm' => 'px-2 py-1',
-                'default' => 'px-4 py-2',
+                default => 'px-4 py-2',
             })
             ->join(' ');
     }
