@@ -48,7 +48,7 @@ abstract class WiredInputComponent extends Component
             ->push('rounded-md')
             ->push('shadow-sm')
             ->push(match ($this->size) {
-                'sm' => 'px-2 py-1',
+                'sm' => 'px-4 py-1',
                 default => 'px-4 py-2',
             })
             ->join(' ');
