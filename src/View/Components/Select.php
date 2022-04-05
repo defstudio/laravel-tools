@@ -18,4 +18,9 @@ class Select extends WiredInputComponent
     ) {
         parent::__construct($id, $label, $defer, $model, $size, $wFull, $color);
     }
+
+    public function padding_x_class(): string
+    {
+        return "pl-2 pr-6";
+    }
 }

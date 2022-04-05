@@ -47,10 +47,28 @@ abstract class WiredInputComponent extends Component
             ->push("focus:ring focus:ring-$this->color-200 focus:ring-opacity-50")
             ->push('rounded-md')
             ->push('shadow-sm')
-            ->push(match ($this->size) {
-                'sm' => 'px-4 py-1',
-                default => 'px-4 py-2',
-            })
+            ->push($this->padding_class())
             ->join(' ');
+    }
+
+    public function padding_class(): string
+    {
+        return "{$this->padding_x_class()} {$this->padding_y_class()}";
+    }
+
+    public function padding_x_class(): string
+    {
+        return match ($this->size) {
+            'sm' => 'px-2',
+            default => 'px-4',
+        };
+    }
+
+    public function padding_y_class(): string
+    {
+        return match ($this->size) {
+            'sm' => 'py-1',
+            default => 'py-2',
+        };
     }
 }
