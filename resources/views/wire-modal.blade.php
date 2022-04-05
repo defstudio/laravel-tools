@@ -9,8 +9,21 @@
         </div>
     @endif
     
-    @unless(empty($title))
-        <div class="text-lg underline mb-4">{{$title}}</div>
+    @if(isset($title) || isset($rightTitle))
+        <div class="mb-4 flex justify-between">
+            @if(isset($title))
+                <div class="text-lg underline">
+                    {{$title}}
+                </div>
+            @endif
+            
+            @if(isset($rightTitle))
+                <div>
+                    {{$rightTitle}}
+                </div>
+            @endif
+        </div>
+    
     @endunless
     
     <div {{$attributes->class($grid ? "md:grid md:grid-cols-$grid md:gap-6" : '')}}>
