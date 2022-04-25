@@ -12,23 +12,27 @@
             class='{{$base_class()}} cursor-pointer'
             @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
     >
-        @if(!empty($unselected))
-            <option value="">{{$unselected}}</option>
-        @endif
-        @foreach($options as $value => $label)
-            @if(is_array($label))
-                @if(count($label) > 0)
-                    <optgroup label="{{$value}}">
-                        @foreach($label as $suboption_value => $suboption_label)
-                            <option value="{{$suboption_value}}">{{$suboption_label}}</option>
-                        @endforeach
-                    </optgroup>
-                @endif
-            @else
-                <option value="{{$value}}">{{$label}}</option>
+        @isset($slot)
+            {{$slot}}
+        @else
+            @if(!empty($unselected))
+                <option value="">{{$unselected}}</option>
             @endif
+            @foreach($options as $value => $label)
+                @if(is_array($label))
+                    @if(count($label) > 0)
+                        <optgroup label="{{$value}}">
+                            @foreach($label as $suboption_value => $suboption_label)
+                                <option value="{{$suboption_value}}">{{$suboption_label}}</option>
+                            @endforeach
+                        </optgroup>
+                    @endif
+                @else
+                    <option value="{{$value}}">{{$label}}</option>
+                @endif
 
-        @endforeach
+            @endforeach
+        @endisset
     </select>
 
     @if($model)
