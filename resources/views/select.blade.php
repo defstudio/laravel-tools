@@ -6,7 +6,7 @@
     @endif
 
     <select id="{{$id}}"
-            class='{{$base_class()}}'
+            class='{{$base_class()}} cursor-pointer'
             @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
     >
         @if(!empty($unselected))
