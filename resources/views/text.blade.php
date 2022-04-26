@@ -1,3 +1,12 @@
+<?php
+
+use Illuminate\View\ComponentSlot;
+
+/** @var ComponentSlot $prefix */
+/** @var ComponentSlot $postfix */
+?>
+
+
 <div {{$attributes}}>
     @if(!empty($label))
         <label for="{{$id}}" class='block font-medium text-sm text-gray-700'>
@@ -12,22 +21,22 @@
         "relative rounded-md shadow-sm",
         $wFull => 'w-full',
     ])>
-        @isset($prefix)
+        @if(isset($prefix) && $prefix->isNotEmpty())
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <span class="text-gray-500 sm:text-sm"> {{$prefix}} </span>
             </div>
-        @endisset
+        @endif
         <input id="{{$id}}"
                type="text"
                autocomplete="off"
                class='{{$base_class()}} {{isset($prefix) ? 'pl-7': ''}} {{isset($postfix) ? 'pr-7': ''}}'
                @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
         />
-        @isset($postfix)
+        @if(isset($postfix) && $postfix->isNotEmpty())
             <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                 <span class="text-gray-500 sm:text-sm"> {{$postfix}} </span>
             </div>
-        @endisset
+        @endif
     </div>
 
     @if($model)
