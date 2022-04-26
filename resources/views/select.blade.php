@@ -12,7 +12,7 @@
             class='{{$base_class()}} cursor-pointer'
             @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
     >
-        @isset($slot)
+        @if(isset($slot) && $slot->isNotEmpty())
             {{$slot}}
         @else
             @if(!empty($unselected))
