@@ -28,6 +28,9 @@ use Illuminate\View\ComponentSlot;
                type="number"
                autocomplete="off"
                class='{{$base_class()}} {{isset($prefix) && $prefix->isNotEmpty() ? 'pl-7': ''}} {{isset($postfix) && $postfix->isNotEmpty() ? 'pr-7': ''}}'
+               @if($min!==null)min="{{$min}}"@endif
+               @if($max!==null)max="{{$max}}"@endif
+               @if($step!==null)step="{{$step}}"@endif
                @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
         />
         @if(isset($postfix) && $postfix->isNotEmpty())
