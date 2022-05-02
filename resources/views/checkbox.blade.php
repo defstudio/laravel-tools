@@ -8,7 +8,7 @@
 
     @if(!empty($label))
         <label for="{{$id}}" class='font-medium text-sm text-gray-700 cursor-pointer'>
-            {{$label}}
+            &nbsp;{{$label}}
         </label>
     @endif
 
