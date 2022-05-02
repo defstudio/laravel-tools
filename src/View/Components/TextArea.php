@@ -7,14 +7,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class TextArea extends Component
+class TextArea extends WiredInputComponent
 {
-    public function __construct(
-    ) {
-    }
 
-    public function render(): Factory|View|Application
-    {
-        return view('tools::text-area');
-    }
 }
