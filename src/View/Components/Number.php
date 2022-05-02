@@ -18,12 +18,13 @@ class Number extends WiredInputComponent
         string $size = 'normal',
         bool $wFull = true,
         string $color = 'indigo',
+        bool $showErrors = true,
         public int|float|null $min = null,
         public int|float|null $max = null,
         public int|float|null $step = null,
     )
     {
-        parent::__construct($id, $label, $defer, $model, $size, $wFull, $color);
+        parent::__construct($id, $label, $defer, $model, $size, $wFull, $color, $showErrors);
     }
 
 }

@@ -13,10 +13,11 @@ class Select extends WiredInputComponent
         bool $wFull = true,
         string $size = 'normal',
         string $color = 'indigo',
+        bool $showErrors = true,
         public iterable $options = [],
         public string $unselected = '',
     ) {
-        parent::__construct($id, $label, $defer, $model, $size, $wFull, $color);
+        parent::__construct($id, $label, $defer, $model, $size, $wFull, $color, $showErrors);
     }
 
     public function padding_x_class(): string

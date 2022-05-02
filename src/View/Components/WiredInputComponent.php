@@ -19,6 +19,7 @@ abstract class WiredInputComponent extends Component
         public string $size = 'normal',
         public bool $wFull = true,
         public string $color = 'indigo',
+        public bool $showErrors = true,
     ) {
         if (empty($this->id)) {
             $this->id = $this->model ?? str($this->component_name())->append('-input-', Str::orderedUuid());
