@@ -16,25 +16,27 @@ use Illuminate\View\ComponentSlot;
     @endif
 
     <div @class([
-        "relative rounded-md shadow-sm",
+        "flex rounded-md shadow-sm",
         $wFull => 'w-full',
+        "border border-gray-300 focus:border-$color-300",
+        "focus:ring focus:ring-$color-200 focus:ring-opacity-50",
     ])>
         @if(isset($prefix) && $prefix->isNotEmpty())
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <div class="pl-2 flex items-center pointer-events-none">
                 <span class="text-gray-500 sm:text-sm"> {{$prefix}} </span>
             </div>
         @endif
         <input id="{{$id}}"
                type="number"
                autocomplete="off"
-               class='{{$base_class()}} {{isset($prefix) && $prefix->isNotEmpty() ? 'pl-7': ''}} {{isset($postfix) && $postfix->isNotEmpty() ? 'pr-7': ''}}'
+               class='{{$base_class(false)}} '
                @if($min!==null)min="{{$min}}"@endif
                @if($max!==null)max="{{$max}}"@endif
                @if($step!==null)step="{{$step}}"@endif
                @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
         />
         @if(isset($postfix) && $postfix->isNotEmpty())
-            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+            <div class="pr-2 flex items-center pointer-events-none">
                 <span class="text-gray-500 sm:text-sm"> {{$postfix}} </span>
             </div>
         @endif
