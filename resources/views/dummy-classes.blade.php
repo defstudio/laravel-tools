@@ -8,5 +8,6 @@
         focus:ring focus:ring-indigo-200 focus:ring-opacity-50
         rounded-md
         shadow-sm
+        border-0  focus:ring-0
     "
 ></div>
