@@ -38,15 +38,16 @@ abstract class WiredInputComponent extends Component
         return strtolower(ltrim(preg_replace('/([A-Z])/', '-\\1', class_basename(static::class)), '-'));
     }
 
-    public function base_class(): string
+    public function base_class($withBorders = true): string
     {
         return Collection::empty()
             ->push('block')
             ->when($this->wFull, fn (Collection $classes) => $classes->push('w-full'))
-            ->push("border-gray-300 focus:border-$this->color-300")
-            ->push("focus:ring focus:ring-$this->color-200 focus:ring-opacity-50")
-            ->push('rounded-md')
-            ->push('shadow-sm')
+            ->when($withBorders, fn (Collection $classes) => $classes->push("border-gray-300 focus:border-$this->color-300"))
+            ->when($withBorders, fn (Collection $classes) => $classes->push("focus:ring focus:ring-$this->color-200 focus:ring-opacity-50"))
+            ->when($withBorders, fn (Collection $classes) => $classes->push("rounded-md"))
+            ->when($withBorders, fn (Collection $classes) => $classes->push("shadow-sm"))
+            ->when(!$withBorders, fn (Collection $classes) => $classes->push("border-0 focus:ring-0"))
             ->push($this->padding_class())
             ->join(' ');
     }
@@ -59,8 +60,8 @@ abstract class WiredInputComponent extends Component
     public function padding_x_class(): string
     {
         return match ($this->size) {
-            'sm' => 'px-2',
-            default => 'px-4',
+            'sm' => 'px-1',
+            default => 'px-2',
         };
     }
 
