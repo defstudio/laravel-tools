@@ -31,6 +31,7 @@ class Button extends \Illuminate\View\Component
 
         $size_classes = match ($this->size) {
             'sm' => 'px-2 py-1',
+            'xs' => 'px-1 py-0.5',
             default => 'px-4 py-2'
         };
 
