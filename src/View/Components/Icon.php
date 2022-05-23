@@ -13,8 +13,14 @@ class Icon extends Component
         public string $name,
         public string $vendor = 'heroicons',
         public string $set = 'outline',
-        public string $size = '6'
+        public string $size = 'normal'
     ) {
+        $this->size = match ($this->size) {
+            'normal' => 6,
+            'sm' => 6,
+            'xs' => 5,
+            default => $this->size
+        };
     }
 
     public function render(): Factory|View|Application
