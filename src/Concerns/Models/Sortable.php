@@ -65,8 +65,8 @@ trait Sortable
         }
 
         $swap_with = $this->sort_query()
-            ->orderBy('position', 'desc')
-            ->where('position', '<', $this->getAttribute($this->sort_attribute))
+            ->orderBy($this->sort_attribute, 'desc')
+            ->where($this->sort_attribute, '<', $this->getAttribute($this->sort_attribute))
             ->limit(1)
             ->first();
 
@@ -86,8 +86,8 @@ trait Sortable
         }
 
         $swap_with = $this->sort_query()
-            ->orderBy('position')
-            ->where('position', '>', $this->getAttribute($this->sort_attribute))
+            ->orderBy($this->sort_attribute)
+            ->where($this->sort_attribute, '>', $this->getAttribute($this->sort_attribute))
             ->limit(1)
             ->first();
 
@@ -110,6 +110,29 @@ trait Sortable
         }
 
         $this->saveQuietly();
+    }
+
+    public function move_at(int $position): void
+    {
+        if(property_exists(static::class, '_fake') && self::$_fake){
+            $this->position = $position;
+            return;
+        }
+
+        $this->setAttribute($this->sort_attribute, $position);
+        $this->saveQuietly();
+
+        $this->sort_query()
+            ->orderBy($this->sort_attribute)
+            ->where($this->sort_attribute, '>=', $position)
+            ->where('id', '!=', $this->id)
+            ->each(function(Model $other_model) use(&$position){
+                $other_model->setAttribute($this->sort_attribute, ++$position);
+                $other_model->saveQuietly();
+            });
+
+        $this->recompute_sorting();
+
     }
 
     public function recompute_sorting(): void
