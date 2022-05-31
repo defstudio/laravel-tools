@@ -19,9 +19,9 @@ trait Fakeable
 
     private bool $_forceDeleted = false;
 
-    public static function fake(): void
+    public static function fake(bool $fake = true): void
     {
-        self::$_fake = true;
+        self::$_fake = $fake;
     }
 
     public function save(array $options = []): bool
