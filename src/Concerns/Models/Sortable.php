@@ -57,6 +57,16 @@ trait Sortable
         $query->orderBy($this->sort_attribute);
     }
 
+    /**
+     * @param Builder<Model> $query
+     *
+     * @phpstan-ignore-next-line
+     */
+    public function scopeSortedDesc(Builder $query): void
+    {
+        $query->orderByDesc($this->sort_attribute);
+    }
+
     public function move_up(): void
     {
         if(property_exists(static::class, '_fake') && self::$_fake){
@@ -114,6 +124,7 @@ trait Sortable
 
     public function move_at(int $position): void
     {
+        dump("Move at $position");
         if(property_exists(static::class, '_fake') && self::$_fake){
             $this->position = $position;
             return;
@@ -127,6 +138,7 @@ trait Sortable
             ->where($this->sort_attribute, '>=', $position)
             ->where('id', '!=', $this->id)
             ->each(function(Model $other_model) use(&$position){
+                dump("spostamento da $other_model->position a ". $position+1);
                 $other_model->setAttribute($this->sort_attribute, ++$position);
                 $other_model->saveQuietly();
             });
@@ -137,6 +149,8 @@ trait Sortable
 
     public function recompute_sorting(): void
     {
+        dump("recompute <prima>", $this->sort_query()
+            ->orderBy($this->sort_attribute)->pluck('position', 'id')->toArray());
         $this->sort_query()
             ->orderBy($this->sort_attribute)
             ->get()
@@ -145,6 +159,8 @@ trait Sortable
                 $model->setAttribute($this->sort_attribute, $index + 1);
                 $model->saveQuietly();
             });
+        dump("recompute <dopo>", $this->sort_query()
+            ->orderBy($this->sort_attribute)->pluck('position', 'id')->toArray());
     }
 
     public function swap_with(self $other_model): void
