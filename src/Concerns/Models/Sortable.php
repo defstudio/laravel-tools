@@ -137,7 +137,6 @@ trait Sortable
             ->where($this->sort_attribute, '>=', $position)
             ->where('id', '!=', $this->id)
             ->each(function(Model $other_model) use(&$position){
-                dump("spostamento da $other_model->position a ". $position+1);
                 $other_model->setAttribute($this->sort_attribute, ++$position);
                 $other_model->saveQuietly();
             });
