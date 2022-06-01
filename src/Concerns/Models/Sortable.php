@@ -149,8 +149,6 @@ trait Sortable
 
     public function recompute_sorting(): void
     {
-        dump("recompute <prima>", $this->sort_query()
-            ->orderBy($this->sort_attribute)->pluck('position', 'id')->toArray());
         $this->sort_query()
             ->orderBy($this->sort_attribute)
             ->get()
@@ -159,8 +157,6 @@ trait Sortable
                 $model->setAttribute($this->sort_attribute, $index + 1);
                 $model->saveQuietly();
             });
-        dump("recompute <dopo>", $this->sort_query()
-            ->orderBy($this->sort_attribute)->pluck('position', 'id')->toArray());
     }
 
     public function swap_with(self $other_model): void
