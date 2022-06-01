@@ -124,7 +124,6 @@ trait Sortable
 
     public function move_at(int $position): void
     {
-        dump("Move at $position");
         if(property_exists(static::class, '_fake') && self::$_fake){
             $this->position = $position;
             return;
