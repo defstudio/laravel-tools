@@ -2,7 +2,7 @@
     @if($alignWithOthers)
         <label>&nbsp;</label>
     @endif
-    
+
     <div class="grow flex items-center">
         <input id="{{$id}}"
                type="checkbox"
@@ -10,17 +10,13 @@
                autocomplete="none"
                @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
         />
-        
+
         @if(!empty($label))
-            @if(is_string($label))
-                <label for="{{$id}}" class='font-medium text-sm text-gray-700 cursor-pointer'>
-                    &nbsp;{{$label}}
-                </label>
-            @else
-                {{$label}}
-            @endif
+            <label for="{{$id}}" class='font-medium text-sm text-gray-700 cursor-pointer'>
+                &nbsp;{{$label}}
+            </label>
         @endif
-        
+
         @if($model && $showErrors)
             @error($model)
             <p class='text-sm text-red-600 mt-2'>{{ $message }}</p>
