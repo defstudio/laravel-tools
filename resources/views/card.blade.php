@@ -28,7 +28,7 @@
          x-transition:leave-start="opacity-100 transform translate-y-0"
          x-transition:leave-end="opacity-0 transform -translate-y-3"
         @class([
-        'py-4 py-5 sm:p-6',
+        'py-4 py-5 p-6',
         'bg-white',
         'shadow',
         'sm:rounded-bl-md sm:rounded-br-md' => !isset($actions),
