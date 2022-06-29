@@ -28,7 +28,7 @@ use Illuminate\View\ComponentSlot;
         @endif
         <input id="{{$id}}"
                type="number"
-               autocomplete="off"
+               autocomplete="{{$autocomplete}}"
                class='{{$base_class(false)}} '
                @if($min!==null)min="{{$min}}"@endif
                @if($max!==null)max="{{$max}}"@endif

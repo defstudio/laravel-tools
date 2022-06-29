@@ -30,7 +30,7 @@ use Illuminate\View\ComponentSlot;
         @endif
         <input id="{{$id}}"
                type="text"
-               autocomplete="off"
+               autocomplete="{{$autocomplete}}"
                class='{{$base_class(false)}}'
                @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
         />
