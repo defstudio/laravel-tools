@@ -31,6 +31,7 @@ use Illuminate\View\ComponentSlot;
         <input id="{{$id}}"
                type="password"
                autocomplete="off"
+               placeholder="{{$placeholder}}"
                class='{{$base_class(false)}}'
                @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
         />
