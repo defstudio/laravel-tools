@@ -48,6 +48,7 @@ use Illuminate\View\ComponentSlot;
                      'file:-mb-1' => $size === 'sm',
                ])
                {{$multiple ? 'multiple' : ''}}
+               {{$accept ? "accept='$accept'"}}
                @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
         />
         

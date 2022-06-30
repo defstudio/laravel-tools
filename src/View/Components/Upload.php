@@ -22,6 +22,7 @@ class Upload extends WiredInputComponent
         string $autocomplete = 'off',
         string $hint = '',
         public bool $multiple = false,
+        public string $accept = '',
     )
     {
         parent::__construct($id, $label, $defer, $model, $size, $wFull, $color, $showErrors, $autocomplete, $hint);
