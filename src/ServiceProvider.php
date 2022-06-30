@@ -17,6 +17,7 @@ use DefStudio\Tools\View\Components\Password;
 use DefStudio\Tools\View\Components\Select;
 use DefStudio\Tools\View\Components\Text;
 use DefStudio\Tools\View\Components\TextArea;
+use DefStudio\Tools\View\Components\Upload;
 use DefStudio\Tools\View\Components\WireModal;
 use Livewire\Livewire;
 
@@ -39,6 +40,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             Select::class,
             Text::class,
             TextArea::class,
+            Upload::class,
             WireModal::class,
         ]);
 

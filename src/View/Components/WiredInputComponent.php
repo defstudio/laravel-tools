@@ -45,8 +45,9 @@ abstract class WiredInputComponent extends Component
     {
         return Collection::empty()
             ->push('block')
+            ->push('text-gray-700')
             ->when($this->wFull, fn (Collection $classes) => $classes->push('w-full'))
-            ->when($withBorders, fn (Collection $classes) => $classes->push("border-gray-300 focus:border-$this->color-300"))
+            ->when($withBorders, fn (Collection $classes) => $classes->push("border border-gray-300 focus:border-$this->color-300"))
             ->when($withBorders, fn (Collection $classes) => $classes->push("focus:ring focus:ring-$this->color-200 focus:ring-opacity-50"))
             ->when($withBorders, fn (Collection $classes) => $classes->push("rounded-md"))
             ->when($withBorders, fn (Collection $classes) => $classes->push("shadow-sm"))
