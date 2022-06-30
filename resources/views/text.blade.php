@@ -31,7 +31,7 @@ use Illuminate\View\ComponentSlot;
         <input id="{{$id}}"
                type="text"
                autocomplete="{{$autocomplete}}"
-               placeholder="{{$placeholder}}"
+               placeholder="{{$hint}}"
                class='{{$base_class(false)}}'
                @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
         />

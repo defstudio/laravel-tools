@@ -29,7 +29,7 @@ use Illuminate\View\ComponentSlot;
         <input id="{{$id}}"
                type="number"
                autocomplete="{{$autocomplete}}"
-               placeholder="{{$placeholder}}"
+               placeholder="{{$hint}}"
                class='{{$base_class(false)}} '
                @if($min!==null)min="{{$min}}"@endif
                @if($max!==null)max="{{$max}}"@endif
