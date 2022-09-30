@@ -17,7 +17,7 @@ trait Sortable
     public static function bootSortable(): void
     {
         static::creating(function (self $model) {
-            if(empty($model->position)){
+            if (empty($model->position)) {
                 $model->move_end();
             }
         });
@@ -72,25 +72,49 @@ trait Sortable
     /**
      * @param iterable<int> $skip_ids
      */
-    public function move_up(iterable $skip_ids = []): void
+    public function previous(iterable $skip_ids = []): static|null
     {
-        if(property_exists(static::class, '_fake') && self::$_fake){
-            $this->position--;
-            return;
-        }
-
-        /** @var Sortable $swap_with */
-        $swap_with = $this->sort_query()
+        /** @phpstan-ignore-next-line */
+        return $this->sort_query()
             ->orderBy($this->sort_attribute, 'desc')
             ->where($this->sort_attribute, '<', $this->getAttribute($this->sort_attribute))
             ->whereNotIn('id', $skip_ids)
             ->limit(1)
             ->first();
+    }
+
+    /**
+     * @param iterable<int> $skip_ids
+     */
+    public function next(iterable $skip_ids = []): static|null
+    {
+        /** @phpstan-ignore-next-line */
+        return $this->sort_query()
+            ->orderBy($this->sort_attribute)
+            ->where($this->sort_attribute, '>', $this->getAttribute($this->sort_attribute))
+            ->whereNotIn('id', $skip_ids)
+            ->limit(1)
+            ->first();
+    }
+
+
+    /**
+     * @param iterable<int> $skip_ids
+     */
+    public function move_up(iterable $skip_ids = []): void
+    {
+        if (property_exists(static::class, '_fake') && self::$_fake) {
+            $this->position--;
+            return;
+        }
+
+        /** @var Sortable $swap_with */
+        $swap_with = $this->previous($skip_ids);
 
         if ($swap_with === null) {
             return;
         }
-        
+
         $this->swap_with($swap_with);
     }
 
@@ -99,18 +123,13 @@ trait Sortable
      */
     public function move_down(iterable $skip_ids = []): void
     {
-        if(property_exists(static::class, '_fake') && self::$_fake){
+        if (property_exists(static::class, '_fake') && self::$_fake) {
             $this->position++;
             return;
         }
 
         /** @var Sortable $swap_with */
-        $swap_with = $this->sort_query()
-            ->orderBy($this->sort_attribute)
-            ->where($this->sort_attribute, '>', $this->getAttribute($this->sort_attribute))
-            ->whereNotIn('id', $skip_ids)
-            ->limit(1)
-            ->first();
+        $swap_with = $this->next();
 
         if ($swap_with === null) {
             return;
@@ -134,7 +153,7 @@ trait Sortable
 
     public function move_at(int $position): void
     {
-        if(property_exists(static::class, '_fake') && self::$_fake){
+        if (property_exists(static::class, '_fake') && self::$_fake) {
             $this->position = $position;
             return;
         }
@@ -146,7 +165,7 @@ trait Sortable
             ->orderBy($this->sort_attribute)
             ->where($this->sort_attribute, '>=', $position)
             ->where('id', '!=', $this->id)
-            ->each(function(Model $other_model) use(&$position){
+            ->each(function (Model $other_model) use (&$position) {
                 $other_model->setAttribute($this->sort_attribute, ++$position);
                 $other_model->saveQuietly();
             });
