@@ -6,6 +6,8 @@ namespace DefStudio\Tools\Concerns\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Closure;
+use Illuminate\Support\Collection;
 
 /**
  * @mixin Model
@@ -24,6 +26,59 @@ trait Sortable
 
         static::deleted(function (self $model) {
             $model->recompute_sorting();
+        });
+    }
+
+    /**
+     * @param callable(static $sortable): bool $filter
+     */
+    public static function move_group_down(Collection $group, Closure $filter = null): void
+    {
+        if($group->isEmpty()){
+            return;
+        }
+
+        $group = $group->sortByDesc($group->first()->sort_attribute);
+
+        /** @var Sortable $pivot */
+        $pivot = $group->first();
+
+        $target_position = $pivot->next($filter)?->getAttribute($pivot->sort_attribute);
+
+        $target_position ??= $pivot->sort_query()
+                ->orderByDesc($pivot->sort_attribute)
+                ->first()?->getAttribute($pivot->sort_attribute) + 1;
+
+
+        if($target_position === null){
+            return;
+        }
+
+
+        $group->each(function($sortable) use (&$target_position){
+            $sortable->move_at($target_position--);
+        });
+    }
+
+    /**
+     * @param callable(static $sortable): bool $filter
+     */
+    public static function move_group_up(Collection $group, Closure $filter = null): void
+    {
+        if($group->isEmpty()){
+            return;
+        }
+
+        $group = $group->sortBy($group->first()->sort_attribute);
+
+        /** @var Sortable $pivot */
+        $pivot = $group->first();
+
+        $target_position = $pivot->previous($filter)?->getAttribute($pivot->sort_attribute) ?? 0;
+        $target_position++;
+
+        $group->each(function($sortable) use (&$target_position){
+            $sortable->move_at($target_position++);
         });
     }
 
@@ -70,38 +125,57 @@ trait Sortable
     }
 
     /**
-     * @param iterable<int> $skip_ids
+     * @param callable(static $sortable): bool $filter
      */
-    public function previous(iterable $skip_ids = []): static|null
+    public function previous(Closure $filter = null): static|null
     {
-        /** @phpstan-ignore-next-line */
-        return $this->sort_query()
-            ->orderBy($this->sort_attribute, 'desc')
-            ->where($this->sort_attribute, '<', $this->getAttribute($this->sort_attribute))
-            ->whereNotIn('id', $skip_ids)
-            ->limit(1)
-            ->first();
+        if($filter === null){
+            /** @phpstan-ignore-next-line */
+            return $this->sort_query()
+                ->orderBy($this->sort_attribute, 'desc')
+                ->where($this->sort_attribute, '<', $this->getAttribute($this->sort_attribute))
+                ->limit(1)
+                ->first();
+        }
+
+        $current = $this;
+        while(($current = $current->previous()) !== null){
+            if($filter($current)){
+                return $current;
+            }
+        }
+
+        return null;
     }
 
     /**
-     * @param iterable<int> $skip_ids
+     * @param callable(static $sortable): bool $filter
      */
-    public function next(iterable $skip_ids = []): static|null
+    public function next(Closure $filter = null): static|null
     {
-        /** @phpstan-ignore-next-line */
-        return $this->sort_query()
-            ->orderBy($this->sort_attribute)
-            ->where($this->sort_attribute, '>', $this->getAttribute($this->sort_attribute))
-            ->whereNotIn('id', $skip_ids)
-            ->limit(1)
-            ->first();
+        if($filter === null){
+            /** @phpstan-ignore-next-line */
+            return $this->sort_query()
+                ->orderBy($this->sort_attribute)
+                ->where($this->sort_attribute, '>', $this->getAttribute($this->sort_attribute))
+                ->limit(1)
+                ->first();
+        }
+
+        $current = $this;
+        while(($current = $current->next()) !== null){
+            if($filter($current)){
+                return $current;
+            }
+        }
+
+        return null;
     }
 
-
     /**
-     * @param iterable<int> $skip_ids
+     * @param callable(static $sortable): bool $filter
      */
-    public function move_up(iterable $skip_ids = []): void
+    public function move_up(Closure $filter = null): void
     {
         if (property_exists(static::class, '_fake') && self::$_fake) {
             $this->position--;
@@ -109,7 +183,7 @@ trait Sortable
         }
 
         /** @var Sortable $swap_with */
-        $swap_with = $this->previous($skip_ids);
+        $swap_with = $this->previous($filter);
 
         if ($swap_with === null) {
             return;
@@ -119,9 +193,9 @@ trait Sortable
     }
 
     /**
-     * @param iterable<int> $skip_ids
+     * @param callable(static $sortable): bool $filter
      */
-    public function move_down(iterable $skip_ids = []): void
+    public function move_down(Closure $filter = null): void
     {
         if (property_exists(static::class, '_fake') && self::$_fake) {
             $this->position++;
@@ -129,7 +203,7 @@ trait Sortable
         }
 
         /** @var Sortable $swap_with */
-        $swap_with = $this->next();
+        $swap_with = $this->next($filter);
 
         if ($swap_with === null) {
             return;
