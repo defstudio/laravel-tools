@@ -14,10 +14,12 @@ trait Sortable
 {
     protected string $sort_attribute = 'position';
 
-    public static function bootSortable(): void
+    public static function bootedSortable(): void
     {
         static::creating(function (self $model) {
-            $model->move_end();
+            if($model->position === null){
+                $model->move_end();
+            }
         });
 
         static::deleted(function (self $model) {
@@ -67,7 +69,10 @@ trait Sortable
         $query->orderByDesc($this->sort_attribute);
     }
 
-    public function move_up(): void
+    /**
+     * @param iterable<int> $skip_ids
+     */
+    public function move_up(iterable $skip_ids = []): void
     {
         if(property_exists(static::class, '_fake') && self::$_fake){
             $this->position--;
@@ -77,6 +82,7 @@ trait Sortable
         $swap_with = $this->sort_query()
             ->orderBy($this->sort_attribute, 'desc')
             ->where($this->sort_attribute, '<', $this->getAttribute($this->sort_attribute))
+            ->whereNotIn('id', $skip_ids)
             ->limit(1)
             ->first();
 
@@ -88,7 +94,10 @@ trait Sortable
         $this->swap_with($swap_with);
     }
 
-    public function move_down(): void
+    /**
+     * @param iterable<int> $skip_ids
+     */
+    public function move_down(iterable $skip_ids = []): void
     {
         if(property_exists(static::class, '_fake') && self::$_fake){
             $this->position++;
@@ -98,6 +107,7 @@ trait Sortable
         $swap_with = $this->sort_query()
             ->orderBy($this->sort_attribute)
             ->where($this->sort_attribute, '>', $this->getAttribute($this->sort_attribute))
+            ->whereNotIn('id', $skip_ids)
             ->limit(1)
             ->first();
 
