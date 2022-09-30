@@ -14,10 +14,10 @@ trait Sortable
 {
     protected string $sort_attribute = 'position';
 
-    public static function bootedSortable(): void
+    public static function bootSortable(): void
     {
         static::creating(function (self $model) {
-            if($model->position === null){
+            if(empty($model->position)){
                 $model->move_end();
             }
         });
@@ -79,6 +79,7 @@ trait Sortable
             return;
         }
 
+        /** @var Sortable $swap_with */
         $swap_with = $this->sort_query()
             ->orderBy($this->sort_attribute, 'desc')
             ->where($this->sort_attribute, '<', $this->getAttribute($this->sort_attribute))
@@ -89,8 +90,7 @@ trait Sortable
         if ($swap_with === null) {
             return;
         }
-
-        /** @phpstan-ignore-next-line */
+        
         $this->swap_with($swap_with);
     }
 
@@ -104,6 +104,7 @@ trait Sortable
             return;
         }
 
+        /** @var Sortable $swap_with */
         $swap_with = $this->sort_query()
             ->orderBy($this->sort_attribute)
             ->where($this->sort_attribute, '>', $this->getAttribute($this->sort_attribute))
@@ -115,7 +116,6 @@ trait Sortable
             return;
         }
 
-        /** @phpstan-ignore-next-line */
         $this->swap_with($swap_with);
     }
 
