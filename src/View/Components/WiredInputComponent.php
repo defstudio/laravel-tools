@@ -53,7 +53,7 @@ abstract class WiredInputComponent extends Component
             ->when($withBorders, fn (Collection $classes) => $classes->push("shadow-sm"))
             ->when(!$withBorders, fn (Collection $classes) => $classes->push("bg-transparent border-0 focus:ring-0"))
             ->push($this->padding_class())
-            ->push('disabled:bg-slate-50 disabled:text-slate-500 disabled:shadow-none')
+            ->push('disabled:rounded-md disabled:bg-slate-50 disabled:text-slate-500 disabled:shadow-none')
             ->join(' ');
     }
 
