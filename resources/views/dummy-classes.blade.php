@@ -9,5 +9,6 @@
         rounded-md
         shadow-sm
         border-0  focus:ring-0
+        disabled:bg-slate-50 disabled:text-slate-500 disabled:shadow-none disabled:border disabled:border-gray-300 disabled:rounded-md
     "
 ></div>
