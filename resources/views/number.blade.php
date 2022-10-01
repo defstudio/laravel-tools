@@ -4,8 +4,8 @@ use Illuminate\View\ComponentSlot;
 /** @var ComponentSlot $prefix */
 /** @var ComponentSlot $postfix */
 
-$disabled = $attributes->has('disabled');
-$required = $attributes->has('required');
+$disabled = $attributes->get('disabled', false);
+$required = $attributes->get('required', false);
 $attributes = $attributes->except(['disabled', '$required']);
 ?>
 

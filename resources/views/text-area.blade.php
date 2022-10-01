@@ -1,6 +1,6 @@
 <?php
-$disabled = $attributes->has('disabled');
-$required = $attributes->has('required');
+$disabled = $attributes->get('disabled', false);
+$required = $attributes->get('required', false);
 $attributes = $attributes->except(['disabled', '$required']);
 ?>
 
