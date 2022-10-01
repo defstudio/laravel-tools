@@ -18,7 +18,6 @@ $attributes = $attributes->except(['disabled', '$required']);
             
             @class([
                 '{{$base_class()}} cursor-pointer',
-                $disabled => "disabled:bg-slate-50"
             ])
             @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
             {{$disabled ? 'disabled' : ''}}
