@@ -15,8 +15,7 @@ $attributes = $attributes->except(['disabled', '$required']);
     @endif
     
     <select id="{{$id}}"
-            
-            @class'{{$base_class()}} cursor-pointer'
+            class='{{$base_class()}} cursor-pointer'
             @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
             {{$disabled ? 'disabled' : ''}}
             {{$required ? 'required' : ''}}
