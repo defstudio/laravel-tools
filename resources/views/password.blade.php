@@ -26,6 +26,7 @@ $attributes = $attributes->except(['disabled', '$required']);
         $wFull => 'w-full',
         "border border-gray-300 focus:border-$color-300",
         "focus:ring focus:ring-$color-200 focus:ring-opacity-50",
+        $disabled => "disabled:bg-slate-50"
     ])>
         @if(isset($prefix) && $prefix->isNotEmpty())
             <div class="pl-2 flex items-center pointer-events-none">
