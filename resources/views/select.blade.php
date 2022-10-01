@@ -1,3 +1,9 @@
+<?php
+$disabled = $attributes->has('disabled');
+$required = $attributes->has('required');
+$attributes = $attributes->except(['disabled', '$required']);
+?>
+
 <div {{$attributes}}>
     @if(!empty($label))
         <label for="{{$id}}" class='block font-medium text-sm text-gray-700'>
@@ -7,10 +13,12 @@
             @endif
         </label>
     @endif
-
+    
     <select id="{{$id}}"
             class='{{$base_class()}} cursor-pointer'
             @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
+            {{$disabled ? 'disabled' : ''}}
+            {{$required ? 'required' : ''}}
     >
         @if(isset($slot) && $slot->isNotEmpty())
             {{$slot}}
@@ -30,11 +38,11 @@
                 @else
                     <option value="{{$value}}">{{$label}}</option>
                 @endif
-
+            
             @endforeach
         @endisset
     </select>
-
+    
     @if($model && $showErrors)
         @error($model)
         <p class='text-sm text-red-600 mt-2'>{{ $message }}</p>

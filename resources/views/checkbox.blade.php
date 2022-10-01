@@ -1,3 +1,9 @@
+<?php
+$disabled = $attributes->has('disabled');
+$required = $attributes->has('required');
+$attributes = $attributes->except(['disabled', '$required']);
+?>
+
 <div {{$attributes->class('flex flex-col h-full')}}>
     @if($alignWithOthers)
         <label>&nbsp;</label>
@@ -8,6 +14,8 @@
             <input id="{{$id}}"
                    type="checkbox"
                    class='rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer'
+                   {{$disabled ? 'disabled' : ''}}
+                   {{$required ? 'required' : ''}}
                    @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
             />
             

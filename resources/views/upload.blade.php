@@ -4,6 +4,10 @@ use Illuminate\View\ComponentSlot;
 
 /** @var ComponentSlot $prefix */
 /** @var ComponentSlot $postfix */
+
+$disabled = $attributes->has('disabled');
+$required = $attributes->has('required');
+$attributes = $attributes->except(['disabled', '$required']);
 ?>
 
 
@@ -32,6 +36,8 @@ use Illuminate\View\ComponentSlot;
                type="file"
                autocomplete="{{$autocomplete}}"
                placeholder="{{$hint}}"
+               {{$disabled ? 'disabled' : ''}}
+               {{$required ? 'required' : ''}}
                @class([
                      $base_class(false),
                      'cursor-pointer',

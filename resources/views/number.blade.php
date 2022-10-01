@@ -3,6 +3,10 @@ use Illuminate\View\ComponentSlot;
 
 /** @var ComponentSlot $prefix */
 /** @var ComponentSlot $postfix */
+
+$disabled = $attributes->has('disabled');
+$required = $attributes->has('required');
+$attributes = $attributes->except(['disabled', '$required']);
 ?>
 
 <div {{$attributes}}>
@@ -31,6 +35,8 @@ use Illuminate\View\ComponentSlot;
                autocomplete="{{$autocomplete}}"
                placeholder="{{$hint}}"
                class='{{$base_class(false)}} '
+               {{$disabled ? 'disabled' : ''}}
+               {{$required ? 'required' : ''}}
                @if($min!==null)min="{{$min}}"@endif
                @if($max!==null)max="{{$max}}"@endif
                @if($step!==null)step="{{$step}}"@endif

@@ -1,3 +1,9 @@
+<?php
+$disabled = $attributes->has('disabled');
+$required = $attributes->has('required');
+$attributes = $attributes->except(['disabled', '$required']);
+?>
+
 <div {{$attributes}}>
     @if(!empty($label))
         <label for="{{$id}}" class='block font-medium text-sm text-gray-700'>
@@ -17,6 +23,8 @@
     <textarea id="{{$id}}"
               class='{{$base_class(false)}}'
               placeholder="{{$hint}}"
+              {{$disabled ? 'disabled' : ''}}
+              {{$required ? 'required' : ''}}
               @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
     >{!! $slot !!}</textarea>
     </div>

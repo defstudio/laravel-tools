@@ -4,6 +4,10 @@ use Illuminate\View\ComponentSlot;
 
 /** @var ComponentSlot $prefix */
 /** @var ComponentSlot $postfix */
+
+$disabled = $attributes->has('disabled');
+$required = $attributes->has('required');
+$attributes = $attributes->except(['disabled', '$required']);
 ?>
 
 
@@ -33,6 +37,8 @@ use Illuminate\View\ComponentSlot;
                autocomplete="off"
                placeholder="{{$hint}}"
                class='{{$base_class(false)}}'
+               {{$disabled ? 'disabled' : ''}}
+               {{$required ? 'required' : ''}}
                @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
         />
         @if(isset($postfix) && $postfix->isNotEmpty())
