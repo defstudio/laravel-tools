@@ -140,6 +140,10 @@ trait Sortable
      */
     public function previous(Closure $filter = null): static|null
     {
+        if (property_exists(static::class, '_fake') && self::$_fake) {
+            return null;
+        }
+
         if($filter === null){
             /** @phpstan-ignore-next-line */
             return $this->sort_query()
@@ -164,6 +168,10 @@ trait Sortable
      */
     public function next(Closure $filter = null): static|null
     {
+        if (property_exists(static::class, '_fake') && self::$_fake) {
+            return null;
+        }
+
         if($filter === null){
             /** @phpstan-ignore-next-line */
             return $this->sort_query()
