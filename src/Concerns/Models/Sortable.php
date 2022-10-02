@@ -21,7 +21,18 @@ trait Sortable
         static::creating(function (self $model) {
             if (empty($model->position)) {
                 $model->move_end();
+                return;
             }
+
+            $position = $model->position;
+
+            $model->sort_query()
+                ->orderBy($model->sort_attribute)
+                ->where($model->sort_attribute, '>=', $position)
+                ->each(function (Model $other_model) use (&$position, $model) {
+                    $other_model->setAttribute($model->sort_attribute, ++$position);
+                    $other_model->saveQuietly();
+                });
         });
 
         static::deleted(function (self $model) {
