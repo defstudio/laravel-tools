@@ -20,19 +20,17 @@ trait Sortable
     {
         static::creating(function (self $model) {
             if (empty($model->position)) {
-                $model->move_end();
-                return;
+                $model->position =  ($model->sort_query()->max($model->sort_attribute) ?? 0) + 1;
+            }else{
+                $position = $model->position;
+                $model->sort_query()
+                    ->orderBy($model->sort_attribute)
+                    ->where($model->sort_attribute, '>=', $position)
+                    ->each(function (Model $other_model) use (&$position, $model) {
+                        $other_model->setAttribute($model->sort_attribute, ++$position);
+                        $other_model->saveQuietly();
+                    });
             }
-
-            $position = $model->position;
-
-            $model->sort_query()
-                ->orderBy($model->sort_attribute)
-                ->where($model->sort_attribute, '>=', $position)
-                ->each(function (Model $other_model) use (&$position, $model) {
-                    $other_model->setAttribute($model->sort_attribute, ++$position);
-                    $other_model->saveQuietly();
-                });
         });
 
         static::deleted(function (self $model) {
@@ -140,10 +138,6 @@ trait Sortable
      */
     public function previous(Closure $filter = null): static|null
     {
-        if (property_exists(static::class, '_fake') && self::$_fake) {
-            return null;
-        }
-
         if($filter === null){
             /** @phpstan-ignore-next-line */
             return $this->sort_query()
@@ -168,10 +162,6 @@ trait Sortable
      */
     public function next(Closure $filter = null): static|null
     {
-        if (property_exists(static::class, '_fake') && self::$_fake) {
-            return null;
-        }
-
         if($filter === null){
             /** @phpstan-ignore-next-line */
             return $this->sort_query()
