@@ -8,7 +8,7 @@ trait CallsTraitMethods
 {
     public function call_trait_methods(string $method_name, array $params = []): void
     {
-        $reflection = new ReflectionClass($this);
+        $reflection = new ReflectionClass(self::class);
 
         foreach ($reflection->getTraitNames() as $trait) {
             $trait = class_basename($trait);
