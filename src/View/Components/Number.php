@@ -19,12 +19,14 @@ class Number extends WiredInputComponent
         bool $wFull = true,
         string $color = 'indigo',
         bool $showErrors = true,
+        public string $autocomplete = 'off',
+        string $hint = '',
         public int|float|null $min = null,
         public int|float|null $max = null,
         public int|float|null $step = null,
     )
     {
-        parent::__construct($id, $label, $defer, $model, $size, $wFull, $color, $showErrors);
+        parent::__construct($id, $label, $defer, $model, $size, $wFull, $color, $showErrors, $autocomplete, $hint);
     }
 
 }
