@@ -28,11 +28,11 @@
          x-transition:leave-start="opacity-100 transform translate-y-0"
          x-transition:leave-end="opacity-0 transform -translate-y-3"
             @class([
+            'sm:rounded-bl-md sm:rounded-br-md' => !isset($actions),
+            'sm:rounded-tl-md sm:rounded-tr-md' => !isset($header),
             'p-4',
             'bg-white',
             'shadow',
-            'sm:rounded-bl-md sm:rounded-br-md' => !isset($actions),
-            'sm:rounded-tl-md sm:rounded-tr-md' => !isset($header),
         ]) >
         {{$slot}}
     </div>

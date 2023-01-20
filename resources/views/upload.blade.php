@@ -22,8 +22,8 @@ $attributes = $attributes->except(['disabled', '$required']);
     @endif
     
     <div @class([
-        "flex rounded-md shadow-sm",
         $wFull => 'w-full',
+        "flex rounded-md shadow-sm",
         "border border-gray-300 focus:border-$color-300",
         "focus:ring focus:ring-$color-200 focus:ring-opacity-50",
     ])>
@@ -39,11 +39,6 @@ $attributes = $attributes->except(['disabled', '$required']);
                {{$disabled ? 'disabled' : ''}}
                {{$required ? 'required' : ''}}
                @class([
-                     $base_class(false),
-                     'cursor-pointer',
-                     'file:cursor-pointer',
-                     'file:border-0',
-                     'file:text-gray-700',
                      'file:h-10' => $size !== 'sm',
                      'file:h-8' => $size === 'sm',
                      'file:-ml-2' => $size !== 'sm',
@@ -52,6 +47,11 @@ $attributes = $attributes->except(['disabled', '$required']);
                      'file:-mt-1' => $size === 'sm',
                      'file:-mb-2' => $size !== 'sm',
                      'file:-mb-1' => $size === 'sm',
+                     $base_class(false),
+                     'cursor-pointer',
+                     'file:cursor-pointer',
+                     'file:border-0',
+                     'file:text-gray-700',
                ])
                {{$multiple ? 'multiple' : ''}}
                {{$accept ? "accept=$accept" : ""}}
