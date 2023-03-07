@@ -15,7 +15,7 @@ $attributes = $attributes->except(['disabled', '$required']);
     @endif
     
     <div @class([
-        $wFull => 'w-full',
+        'w-full' => $wFull,
         "flex rounded-md shadow-sm",
         "border border-gray-300 focus:border-$color-300",
         "focus:ring focus:ring-$color-200 focus:ring-opacity-50",
