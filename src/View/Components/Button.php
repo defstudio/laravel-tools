@@ -35,6 +35,6 @@ class Button extends \Illuminate\View\Component
             default => 'px-4 py-2'
         };
 
-        return "relative inline-flex items-center $size_classes border rounded-md font-semibold text-xs uppercase tracking-widest focus:outline-none focus:ring disabled:opacity-25 transition $color_classes";
+        return "relative inline-flex gap-1 items-center $size_classes border rounded-md font-semibold text-xs uppercase tracking-widest focus:outline-none focus:ring disabled:opacity-25 transition $color_classes";
     }
 }
