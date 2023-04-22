@@ -14,9 +14,11 @@ use DefStudio\Tools\View\Components\Link;
 use DefStudio\Tools\View\Components\Modal;
 use DefStudio\Tools\View\Components\Number;
 use DefStudio\Tools\View\Components\Password;
+use DefStudio\Tools\View\Components\Scripts;
 use DefStudio\Tools\View\Components\Select;
 use DefStudio\Tools\View\Components\Text;
 use DefStudio\Tools\View\Components\TextArea;
+use DefStudio\Tools\View\Components\CkEditor;
 use DefStudio\Tools\View\Components\Upload;
 use DefStudio\Tools\View\Components\WireModal;
 use Livewire\Livewire;
@@ -38,22 +40,24 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             Number::class,
             Password::class,
             Select::class,
+            Scripts::class,
             Text::class,
             TextArea::class,
+            CkEditor::class,
             Upload::class,
             WireModal::class,
         ]);
 
-        $this->loadViewsFrom(__DIR__ . "/../resources/views", 'tools');
+        $this->loadViewsFrom(__DIR__."/../resources/views", 'tools');
 
-        $this->mergeConfigFrom(__DIR__ . "/../config/tools.php", 'tools');
+        $this->mergeConfigFrom(__DIR__."/../config/tools.php", 'tools');
 
         $this->publishes([
-            __DIR__ . "/../resources/views" => resource_path('views/vendor/tools'),
+            __DIR__."/../resources/views" => resource_path('views/vendor/tools'),
         ], 'views');
 
         $this->publishes([
-            __DIR__ . "/../config/tools.php" => config_path('tools.php'),
+            __DIR__."/../config/tools.php" => config_path('tools.php'),
         ], 'config');
 
         Livewire::component('confirmation-modal', ConfirmationModal::class);
