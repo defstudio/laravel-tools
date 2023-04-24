@@ -6,7 +6,7 @@
                 @class([
                    'flex items-center justify-start',
                    'px-4 py-3 sm:px-6',
-                   'bg-gray-50',
+                   'bg-gray-200',
                    'shadow sm:rounded-tl-md sm:rounded-tr-md',
                 ])
         >
@@ -30,7 +30,7 @@
             @class([
             'sm:rounded-bl-md sm:rounded-br-md' => !isset($actions),
             'sm:rounded-tl-md sm:rounded-tr-md' => !isset($header),
-            'p-4',
+            'p-4 sm:px-6',
             'bg-white',
             'shadow',
         ]) >
@@ -38,7 +38,7 @@
     </div>
     
     @if(isset($actions))
-        <div  x-show="show" class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
+        <div  x-show="show" class="flex items-center justify-end px-4 sm:px-6 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
             {{ $actions }}
         </div>
     @endif
