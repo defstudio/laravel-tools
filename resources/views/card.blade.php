@@ -2,19 +2,12 @@
             show:{{$collapsed?'false':'true'}},
     }">
     @if(isset($header))
-        <div
-                @class([
-                   'flex items-center justify-start',
-                   'px-4 py-3 sm:px-6',
-                   'bg-gray-200',
-                   'shadow sm:rounded-tl-md sm:rounded-tr-md',
-                ])
-        >
+        <div {{$header->attributes->class(['flex items-center justify-start px-4 py-3 sm:px-6 bg-gray-50 shadow sm:rounded-tl-md sm:rounded-tr-md'])}}>
             {{ $header }}
             
             @if($collapsable)
                 <svg @click='show=!show' x-bind:class="show ? 'rotate-180' : ''" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-auto cursor-pointer transition-transform duration-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z"/>
                 </svg>
             @endif
         </div>
@@ -38,7 +31,7 @@
     </div>
     
     @if(isset($actions))
-        <div  x-show="show" class="flex items-center justify-end px-4 sm:px-6 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
+        <div x-show="show" class="flex items-center justify-end px-4 sm:px-6 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
             {{ $actions }}
         </div>
     @endif
