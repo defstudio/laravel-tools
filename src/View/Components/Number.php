@@ -21,12 +21,13 @@ class Number extends WiredInputComponent
         bool $showErrors = true,
         public string $autocomplete = 'off',
         string $hint = '',
+        string $baseClass = '',
         public int|float|null $min = null,
         public int|float|null $max = null,
         public int|float|null $step = null,
     )
     {
-        parent::__construct($id, $label, $defer, $model, $size, $wFull, $color, $showErrors, $autocomplete, $hint);
+        parent::__construct($id, $label, $defer, $model, $size, $wFull, $color, $showErrors, $autocomplete, $hint, $baseClass);
     }
 
 }

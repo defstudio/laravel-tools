@@ -22,6 +22,7 @@ abstract class WiredInputComponent extends Component
         public bool $showErrors = true,
         public string $autocomplete = 'off',
         public string $hint = '',
+        public string $baseClass = '',
     ) {
         if (empty($this->id)) {
             $this->id = $this->model ?? str($this->component_name())->append('-input-', Str::orderedUuid());
@@ -54,6 +55,7 @@ abstract class WiredInputComponent extends Component
             ->when(!$withBorders, fn (Collection $classes) => $classes->push("bg-transparent border-0 focus:ring-0"))
             ->push($this->padding_class())
             ->push('disabled:bg-slate-50 disabled:text-slate-500 disabled:shadow-none disabled:rounded-md')
+            ->push($this->baseClass)
             ->join(' ');
     }
 
