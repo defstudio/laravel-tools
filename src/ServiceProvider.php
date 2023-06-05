@@ -8,6 +8,7 @@ use DefStudio\Tools\View\Components\Checkbox;
 use DefStudio\Tools\View\Components\ConfirmAction;
 use DefStudio\Tools\View\Components\ConfirmationModal;
 use DefStudio\Tools\View\Components\Container;
+use DefStudio\Tools\View\Components\Datepicker;
 use DefStudio\Tools\View\Components\Dialog;
 use DefStudio\Tools\View\Components\Icon;
 use DefStudio\Tools\View\Components\Link;
@@ -32,6 +33,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             ConfirmAction::class,
             Container::class,
             Dialog::class,
+            Datepicker::class,
             Icon::class,
             Link::class,
             Modal::class,
