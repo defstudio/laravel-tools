@@ -21,6 +21,7 @@ class Checkbox extends WiredInputComponent
         bool $showErrors = true,
         string $baseClass = '',
         public bool $alignWithOthers = false,
+        public string|int $value = 1,
     ) {
         parent::__construct($id, $label, $defer, $model, $size, $wFull, $color, $showErrors, baseClass: $baseClass);
     }
