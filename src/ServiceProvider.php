@@ -16,6 +16,7 @@ use DefStudio\Tools\View\Components\Modal;
 use DefStudio\Tools\View\Components\Number;
 use DefStudio\Tools\View\Components\Password;
 use DefStudio\Tools\View\Components\Select;
+use DefStudio\Tools\View\Components\Tabs;
 use DefStudio\Tools\View\Components\Text;
 use DefStudio\Tools\View\Components\TextArea;
 use DefStudio\Tools\View\Components\Upload;
@@ -40,6 +41,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             Number::class,
             Password::class,
             Select::class,
+            Tabs::class,
             Text::class,
             TextArea::class,
             Upload::class,
