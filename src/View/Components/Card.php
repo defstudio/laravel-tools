@@ -12,6 +12,7 @@ class Card extends Component
     public function __construct(
         public bool $collapsable = false,
         public bool $collapsed = false,
+        public bool $padding = true,
     ) {
         if($this->collapsable){
             $this->collapsed = false;

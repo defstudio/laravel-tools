@@ -23,7 +23,7 @@
             @class([
             'sm:rounded-bl-md sm:rounded-br-md' => !isset($actions),
             'sm:rounded-tl-md sm:rounded-tr-md' => !isset($header),
-            'p-4 sm:px-6',
+            'p-4 sm:px-6' => $padding,
             'bg-white',
             'shadow',
         ]) >
