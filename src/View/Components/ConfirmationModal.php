@@ -4,6 +4,7 @@ namespace DefStudio\Tools\View\Components;
 
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Hash;
 use LivewireUI\Modal\ModalComponent;
 
 class ConfirmationModal extends ModalComponent
@@ -43,11 +44,6 @@ class ConfirmationModal extends ModalComponent
             return true;
         }
 
-        $guard = app(StatefulGuard::class);
-
-        return $guard->validate([
-            'email' => user()->email,
-            'password' => $this->password_confirmation,
-        ]);
+        return Hash::check($this->password_confirmation, user()->getAuthPassword());
     }
 }
