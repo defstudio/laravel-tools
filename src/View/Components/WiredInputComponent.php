@@ -14,7 +14,7 @@ abstract class WiredInputComponent extends Component
     public function __construct(
         public ?string $id = null,
         public ?string $label = null,
-        public bool $defer = false,
+        public bool $live = false,
         public ?string $model = null,
         public string $size = 'normal',
         public bool $wFull = true,

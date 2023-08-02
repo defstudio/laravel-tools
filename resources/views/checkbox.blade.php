@@ -17,7 +17,7 @@ $attributes = $attributes->except(['disabled', '$required']);
                    class='peer rounded border-gray-300 disabled:border-gray-200 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer'
                    {{$disabled ? 'disabled' : ''}}
                    {{$required ? 'required' : ''}}
-                   @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
+                   @if($model)wire:model{{$live ? '.live' : ''}}="{{$model}}"@endif
             />
             
             @if(!empty($label))

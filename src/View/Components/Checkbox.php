@@ -13,7 +13,7 @@ class Checkbox extends WiredInputComponent
     public function __construct(
         ?string $id = null,
         ?string $label = null,
-        bool $defer = false,
+        bool $live = false,
         ?string $model = null,
         string $size = 'normal',
         bool $wFull = true,
@@ -23,7 +23,7 @@ class Checkbox extends WiredInputComponent
         public bool $alignWithOthers = false,
         public string|int $value = 1,
     ) {
-        parent::__construct($id, $label, $defer, $model, $size, $wFull, $color, $showErrors, baseClass: $baseClass);
+        parent::__construct($id, $label, $live, $model, $size, $wFull, $color, $showErrors, baseClass: $baseClass);
     }
 
 }

@@ -13,7 +13,7 @@ class Upload extends WiredInputComponent
     public function __construct(
         ?string $id = null,
         ?string $label = null,
-        bool $defer = false,
+        bool $live = false,
         ?string $model = null,
         string $size = 'normal',
         bool $wFull = true,
@@ -25,7 +25,7 @@ class Upload extends WiredInputComponent
         public string $accept = '',
     )
     {
-        parent::__construct($id, $label, $defer, $model, $size, $wFull, $color, $showErrors, $autocomplete, $hint);
+        parent::__construct($id, $label, $live, $model, $size, $wFull, $color, $showErrors, $autocomplete, $hint);
     }
 
 }

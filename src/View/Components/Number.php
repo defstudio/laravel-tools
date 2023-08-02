@@ -13,7 +13,7 @@ class Number extends WiredInputComponent
     public function __construct(
         ?string $id = null,
         ?string $label = null,
-        bool $defer = false,
+        bool $live = false,
         ?string $model = null,
         string $size = 'normal',
         bool $wFull = true,
@@ -27,7 +27,7 @@ class Number extends WiredInputComponent
         public int|float|null $step = null,
     )
     {
-        parent::__construct($id, $label, $defer, $model, $size, $wFull, $color, $showErrors, $autocomplete, $hint, $baseClass);
+        parent::__construct($id, $label, $live, $model, $size, $wFull, $color, $showErrors, $autocomplete, $hint, $baseClass);
     }
 
 }
