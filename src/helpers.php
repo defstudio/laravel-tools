@@ -18,7 +18,7 @@ if (!function_exists('user')) {
 }
 
 if (!function_exists('str')) {
-    function str(null|string|\Illuminate\Support\Stringable $string): \Illuminate\Support\Stringable
+    function str(string|\Illuminate\Support\Stringable $string = null): \Illuminate\Support\Stringable
     {
         return \Illuminate\Support\Str::of($string ?? '');
     }
