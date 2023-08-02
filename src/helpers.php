@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
 
 if (!function_exists('user')) {
     function user(): User
@@ -14,13 +15,6 @@ if (!function_exists('user')) {
         }
 
         return $user;
-    }
-}
-
-if (!function_exists('str')) {
-    function str(string|\Illuminate\Support\Stringable $string = null): \Illuminate\Support\Stringable
-    {
-        return \Illuminate\Support\Str::of($string ?? '');
     }
 }
 
