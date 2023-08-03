@@ -60,7 +60,7 @@ $attributes = $attributes->except(['disabled', '$required']);
                {{$accept ? "accept=$accept" : ""}}
                @if($model)wire:model{{$live ? '.live' : ''}}{{$debounce ? '.debounce' : ''}}="{{$model}}"@endif
         />
-        @dump($accept)
+        
         @if(isset($postfix) && $postfix->isNotEmpty())
             <div @class([
                 "pointer-events-none" => !$postfix->attributes->get('pointer-events', false),

@@ -18,7 +18,7 @@
             {{$confirm_text}}
         </x-button>
 
-        <x-button color="secondary" wire:click="$emit('closeModal')" wire:loading.disable>
+        <x-button color="secondary" wire:click="$dispatch('closeModal')" wire:loading.disable>
             {{ $abort_text }}
         </x-button>
     </x-slot>
