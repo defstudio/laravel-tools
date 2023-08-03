@@ -1,9 +1,9 @@
 @php($confirmable_id = md5($attributes->wire('then')))
 
 <span
-    {{$attributes}}
-    x-data
-    x-on:click="Livewire.$dispatch(
+        {{$attributes}}
+        x-data
+        x-on:click="$wire.dispatch(
                     'openModal',
                     {{json_encode([
                             'component' => 'confirmation-modal',
@@ -18,7 +18,7 @@
                             ]
                     ])}}
         )"
-    x-on:action-confirmed.window="setTimeout(() => $event.detail.id === '{{$confirmable_id}}' && $el.dispatchEvent(new CustomEvent('then', { bubbles: false })), 250);"
+        x-on:action-confirmed.window="$event.detail[0].id === '{{$confirmable_id}}'  && $wire.{{$attributes->get('wire:then') }} "
 >
     {{$slot}}
 </span>

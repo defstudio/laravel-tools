@@ -14,11 +14,11 @@
     @endif
 
     <x-slot name="actions">
-        <x-button wire:click="confirm" wire:loading.disable>
+        <x-button wire:click="confirm" wire:loading.attr="disabled">
             {{$confirm_text}}
         </x-button>
 
-        <x-button color="secondary" wire:click="$dispatch('closeModal')" wire:loading.disable>
+        <x-button color="secondary" wire:click="$dispatch('closeModal')" wire:loading.attr="disabled">
             {{ $abort_text }}
         </x-button>
     </x-slot>
