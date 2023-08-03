@@ -13,7 +13,7 @@ class WireModal extends Component
         public string $title = '',
         public int $grid = 6,
         public array $actions = ['Save' => 'save'],
-        public bool $xClose = true,
+        public bool $xClose = false,
     ) {
     }
 
