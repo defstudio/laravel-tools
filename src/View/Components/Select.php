@@ -9,6 +9,7 @@ class Select extends WiredInputComponent
         ?string $id = null,
         ?string $label = null,
         bool $live = false,
+        bool $debounce = false,
         ?string $model = null,
         bool $wFull = true,
         string $size = 'normal',
@@ -18,7 +19,7 @@ class Select extends WiredInputComponent
         public iterable $options = [],
         public string $unselected = '',
     ) {
-        parent::__construct($id, $label, $live, $model, $size, $wFull, $color, $showErrors, baseClass: $baseClass);
+        parent::__construct($id, $label, $live, $debounce, $model, $size, $wFull, $color, $showErrors, baseClass: $baseClass);
     }
 
     public function padding_x_class(): string

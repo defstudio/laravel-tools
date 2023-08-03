@@ -16,7 +16,7 @@ $attributes = $attributes->except(['disabled', '$required']);
     
     <select id="{{$id}}"
             class='{{$base_class()}} cursor-pointer'
-            @if($model)wire:model{{$live ? '.live' : ''}}="{{$model}}"@endif
+            @if($model)wire:model{{$live ? '.live' : ''}}{{$debounce ? '.debounce' : ''}}="{{$model}}"@endif
             {{$disabled ? 'disabled' : ''}}
             {{$required ? 'required' : ''}}
     >
