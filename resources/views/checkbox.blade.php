@@ -21,7 +21,7 @@ $attributes = $attributes->except(['disabled', '$required']);
             />
             
             @if(!empty($label))
-                <x-label for="{{$id}}" class="peer-disabled:text-gray-400 cursor-pointer">&nbsp;{{$label}}</x-label>
+                <label for="{{$id}}" class="font-medium text-sm text-gray-700 peer-disabled:text-gray-400 cursor-pointer">&nbsp;{{$label}}</label>
             @endif
         </div>
         
