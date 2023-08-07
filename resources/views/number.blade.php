@@ -28,7 +28,7 @@ $attributes = $attributes->except(['disabled', '$required']);
         @if(isset($prefix) && $prefix->isNotEmpty())
             <div @class([
                 "pointer-events-none" => !$prefix->attributes->get('pointer-events', false),
-                "pr-2 flex items-center"
+                "pl-1 flex items-center"
             ])>
                 <span class="text-gray-500 sm:text-sm"> {{$prefix}} </span>
             </div>
@@ -48,7 +48,7 @@ $attributes = $attributes->except(['disabled', '$required']);
         @if(isset($postfix) && $postfix->isNotEmpty())
             <div @class([
                 "pointer-events-none" => !$postfix->attributes->get('pointer-events', false),
-                "pr-2 flex items-center"
+                "pr-1 flex items-center"
             ])>
                 <span class="text-gray-500 sm:text-sm"> {{$postfix}} </span>
             </div>
