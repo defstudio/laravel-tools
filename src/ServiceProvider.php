@@ -11,6 +11,7 @@ use DefStudio\Tools\View\Components\Container;
 use DefStudio\Tools\View\Components\Datepicker;
 use DefStudio\Tools\View\Components\Dialog;
 use DefStudio\Tools\View\Components\Icon;
+use DefStudio\Tools\View\Components\Label;
 use DefStudio\Tools\View\Components\Link;
 use DefStudio\Tools\View\Components\Modal;
 use DefStudio\Tools\View\Components\Number;
@@ -36,6 +37,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             Dialog::class,
             Datepicker::class,
             Icon::class,
+            Label::class,
             Link::class,
             Modal::class,
             Number::class,

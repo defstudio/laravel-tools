@@ -13,12 +13,7 @@ $attributes = $attributes->except(['disabled', '$required']);
 
 <div {{$attributes}}>
     @if(!empty($label))
-        <label for="{{$id}}" class='block font-medium text-sm text-gray-700'>
-            {{$label}}
-            @if($attributes->has('required') && $attributes->get('required'))
-                <span class="text-red-500">&nbsp;*</span>
-            @endif
-        </label>
+        <x-label for="{{$id}}" :required="$attributes->has('required') && $attributes->get('required')">{{$label}}</x-label>
     @endif
     
     <div @class([
