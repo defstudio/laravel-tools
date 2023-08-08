@@ -23,11 +23,11 @@ $attributes = $attributes->except(['disabled', '$required']);
         "focus:ring focus:ring-$color-200 focus:ring-opacity-50",
     ])>
         @if(isset($prefix) && $prefix->isNotEmpty())
-            <div @class([
-                "pointer-events-none" => !$prefix->attributes->get('pointer-events', false),
-                "pl-1 flex items-center"
-            ])>
-                <span class="text-gray-500 sm:text-sm"> {{$prefix}} </span>
+            <div {{$prefix->attributes->class([
+                    "pointer-events-none" => !$prefix->attributes->get('pointer-events', false),
+                    "p-1 flex items-center"
+            ])}}>
+                <span class="text-gray-500 sm:text-sm">{{$prefix}}</span>
             </div>
         @endif
         <input id="{{$id}}"
@@ -57,11 +57,11 @@ $attributes = $attributes->except(['disabled', '$required']);
         />
         
         @if(isset($postfix) && $postfix->isNotEmpty())
-            <div @class([
+            <div {{$postfix->attributes->class([
                 "pointer-events-none" => !$postfix->attributes->get('pointer-events', false),
-                "pr-1 flex items-center"
-            ])>
-                <span class="text-gray-500 sm:text-sm"> {{$postfix}} </span>
+                "p-1 flex items-center"
+            ])}}>
+                <span class="text-gray-500 sm:text-sm">{{$postfix}}</span>
             </div>
         @endif
     </div>
