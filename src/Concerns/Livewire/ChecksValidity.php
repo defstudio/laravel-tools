@@ -3,21 +3,22 @@
 namespace DefStudio\Tools\Concerns\Livewire;
 
 use Illuminate\Validation\ValidationException;
-use Livewire\Attributes\Computed;
 
 /**
  * @property-read boolean $valid
  */
 trait ChecksValidity
 {
-    #[Computed]
-    public function valid(): bool
+    public $valid = true;
+
+    public function updatedChecksValidity(): void
     {
         try {
             $this->validate();
-            return true;
-        }catch (ValidationException){
-            return false;
+            $this->valid = true;
+        }catch (ValidationException $exception){
+            $this->setErrorBag($exception->validator->errors());
+            $this->valid = false;
         }
     }
 }
