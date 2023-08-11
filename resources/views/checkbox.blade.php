@@ -6,7 +6,7 @@ $attributes = $attributes->except(['disabled', '$required']);
 
 <div {{$attributes->class('flex flex-col h-full')}}>
     @if($alignWithOthers)
-        <label>&nbsp;</label>
+        <x-label class="mt-2">&nbsp;</x-label>
     @endif
     
     <div class="grow">
