@@ -43,7 +43,7 @@ $attributes = $attributes->except(['disabled', '$required']);
                @if($min!==null)min="{{$min}}"@endif
                @if($max!==null)max="{{$max}}"@endif
                @if($step!==null)step="{{$step}}"@endif
-               @if($model)wire:model{{$defer ? '.defer' : ''}}="{{$model}}"@endif
+               @if($model)wire:model{{$defer ? '.defer' : ''}}{{$debounce ? '.debounce' : ''}}="{{$model}}"@endif
         />
         @if(isset($postfix) && $postfix->isNotEmpty())
             <div @class([

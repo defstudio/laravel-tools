@@ -15,6 +15,7 @@ abstract class WiredInputComponent extends Component
         public ?string $id = null,
         public ?string $label = null,
         public bool $defer = false,
+        public bool $debounce = false,
         public ?string $model = null,
         public string $size = 'normal',
         public bool $wFull = true,
