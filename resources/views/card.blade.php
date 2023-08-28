@@ -1,4 +1,4 @@
-<div {{$attributes->class('grid grid-cols-1 place-items-stretch')}} x-data="{
+<div {{$attributes->class('flex flex-col')}} x-data="{
             show:{{$collapsed?'false':'true'}},
     }">
     @if(isset($header))
@@ -24,6 +24,7 @@
             'sm:rounded-bl-md sm:rounded-br-md' => !isset($actions),
             'sm:rounded-tl-md sm:rounded-tr-md' => !isset($header),
             'p-4 sm:px-6' => $padding,
+            'grow',
             'bg-white',
             'shadow',
         ]) >
