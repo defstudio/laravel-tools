@@ -20,6 +20,7 @@ $attributes = $attributes->except(['disabled', '$required']);
     @endif
 
     <div @class([
+        'overflow-hidden',
         'w-full' => $wFull,
         "flex rounded-md shadow-sm",
         "border border-gray-300 focus:border-$color-300",
