@@ -14,15 +14,11 @@ if (!empty($wire_loading_disabled)) {
     }else if ($wire_loading_disabled !== 'all') {
         $wire_loading_target = $wire_loading_disabled;
     }
-
-    if (!empty($wire_loading_target)) {
-        $attributes = $attributes->merge(['wire:loading.target' => $wire_loading_target]);
-    }
 }
 ?>
 
 <button type="{{$type}}"
-    {{ $attributes->merge(['class' => $base_class()])}}>
+    {{ $attributes->merge(['class' => $base_class()])}} @if(!empty($wire_loading_target))wire:target="{!! $wire_loading_target !!}"@endif>
     @if(!empty($icon))
         <x-icon :class="$slot?->isEmpty()?:'mr-2'" :name="$icon" :size="$size"/>
     @endif
