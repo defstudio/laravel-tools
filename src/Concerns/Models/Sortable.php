@@ -241,6 +241,10 @@ trait Sortable
             return;
         }
 
+        if($position > $this->position){
+            $position++;
+        }
+
         $this->setAttribute($this->sort_attribute, $position);
         $this->saveQuietly();
 
