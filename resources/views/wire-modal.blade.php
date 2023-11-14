@@ -2,29 +2,29 @@
 /** @var \Illuminate\View\ComponentAttributeBag $attributes */
 ?>
 
-<div class="p-2">
+<div {{$attributes->class(['p-2' => $withPadding])}}>
     @if($xClose)
         <div wire:click="$emit('closeModal')" class="absolute top-0 right-0 w-6 h-6 rounded-bl-lg border shadow bg-gray-100 flex justify-center items-center cursor-pointer">
             <x-icon size="4" name="x"/>
         </div>
     @endif
     
-    @if(isset($title) || isset($rightTitle))
+    @if(!empty($title) || !empty($rightTitle))
         <div class="mb-4 flex justify-between">
-            @if(isset($title))
+            @if(!empty($title))
                 <div class="text-lg underline">
                     {{$title}}
                 </div>
             @endif
             
-            @if(isset($rightTitle))
+            @if(!empty($rightTitle))
                 <div>
                     {{$rightTitle}}
                 </div>
             @endif
         </div>
     
-    @endunless
+    @endif
     
     <div {{$attributes->class($grid ? "md:grid md:grid-cols-$grid md:gap-6" : '')}}>
         {{$slot}}
