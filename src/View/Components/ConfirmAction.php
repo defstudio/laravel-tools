@@ -14,7 +14,7 @@ class ConfirmAction extends Component
         public string $content = 'Do you really want it?',
         public string $confirmText = 'Confirm',
         public string $abortText = 'No, Abort',
-        public string $color = 'primary',
+        public string $color = 'none',
         public string|bool $requiresPassword = '',
     ) {
         if ($this->requiresPassword === true) {
