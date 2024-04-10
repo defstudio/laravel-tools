@@ -24,7 +24,7 @@ class Button extends \Illuminate\View\Component
     public function base_class(): string
     {
         $color_classes = match ($this->color) {
-            'primary' => 'bg-gray-800   border-transparent       text-white      hover:bg-gray-700 active:bg-gray-900  focus:border-gray-900  focus:ring-gray-300 ',
+            'none', 'primary' => 'bg-gray-800   border-transparent       text-white      hover:bg-gray-700 active:bg-gray-900  focus:border-gray-900  focus:ring-gray-300 ',
             'secondary' => 'bg-white      border-gray-300          text-gray-700   shadow-sm hover:text-gray-500         focus:border-blue-300  focus:ring-blue-200    active:text-gray-800 active:bg-gray-50 ',
             'danger' => 'bg-red-600    border-transparent       text-white      hover:bg-red-500                      focus:border-red-700   focus:ring-red-200     active:bg-red-600',
         };
