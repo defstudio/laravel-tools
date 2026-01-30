@@ -60,7 +60,7 @@ $attributes = $attributes->except(['disabled', '$required']);
                ])
                {{$multiple ? 'multiple' : ''}}
                {{$accept ? "accept=$accept" : ""}}
-               @if($model)wire:model{{$defer ? '.defer' : ''}}{{$debounce ? '.debounce' : ''}}="{{$model}}"@endif
+               @if($model)wire:model{{!$defer ? '.live' : ''}}{{$debounce ? '.debounce' : ''}}="{{$model}}"@endif
         />
         @dump($accept)
         @if(isset($postfix) && $postfix->isNotEmpty())

@@ -44,7 +44,7 @@ $attributes = $attributes->except(['disabled', '$required']);
                class='{{$base_class(false)}}'
                {{$disabled ? 'disabled' : ''}}
                {{$required ? 'required' : ''}}
-               @if($model)wire:model{{$defer ? '.defer' : ''}}{{$debounce ? '.debounce' : ''}}="{{$model}}"@endif
+               @if($model)wire:model{{!$defer ? '.live' : ''}}{{$debounce ? '.debounce' : ''}}="{{$model}}"@endif
         />
         @if(isset($postfix) && $postfix->isNotEmpty())
             <div @class([

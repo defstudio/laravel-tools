@@ -30,7 +30,7 @@ class ConfirmationModal extends ModalComponent
             return;
         }
 
-        $this->dispatchBrowserEvent('action-confirmed', [
+        $this->dispatch('action-confirmed', [
             'id' => $this->confirmable_id,
         ]);
 
