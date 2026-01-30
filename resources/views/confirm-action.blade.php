@@ -3,7 +3,7 @@
 <span
     {{$attributes}}
     x-data
-    x-on:click="Livewire.emit(
+    x-on:click="Livewire.dispatch(
                     'openModal',
                     'confirmation-modal',
                     {{json_encode([
@@ -16,7 +16,7 @@
                             'confirm_text' => $confirmText,
                     ])}}
         )"
-    x-on:action-confirmed.window="setTimeout(() => $event.detail.id === '{{$confirmable_id}}' && $el.dispatchEvent(new CustomEvent('then', { bubbles: false })), 250);"
+    x-on:action-confirmed.window="setTimeout(() => $event.detail.id === '{{$confirmable_id}}' && $el.dispatch(new CustomEvent('then', { bubbles: false })), 250);"
 >
     {{$slot}}
 </span>

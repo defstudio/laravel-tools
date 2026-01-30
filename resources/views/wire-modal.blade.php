@@ -4,7 +4,7 @@
 
 <div {{$attributes->class(['p-2' => $withPadding])}}>
     @if($xClose)
-        <div wire:click="$emit('closeModal')" class="absolute top-0 right-0 w-6 h-6 rounded-bl-lg border shadow bg-gray-100 flex justify-center items-center cursor-pointer">
+        <div wire:click="$dispatch('closeModal')" class="absolute top-0 right-0 w-6 h-6 rounded-bl-lg border shadow bg-gray-100 flex justify-center items-center cursor-pointer">
             <x-icon size="4" name="x"/>
         </div>
     @endif

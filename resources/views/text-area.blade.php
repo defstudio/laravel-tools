@@ -26,7 +26,7 @@ $attributes = $attributes->except(['disabled', '$required']);
               placeholder="{{$hint}}"
               {{$disabled ? 'disabled' : ''}}
               {{$required ? 'required' : ''}}
-              @if($model)wire:model{{$defer ? '.defer' : ''}}{{$debounce ? '.debounce' : ''}}="{{$model}}"@endif
+              @if($model)wire:model{{!$defer ? '.live' : ''}}{{$debounce ? '.debounce' : ''}}="{{$model}}"@endif
     >{!! $slot !!}</textarea>
     </div>
     @if($model && $showErrors)

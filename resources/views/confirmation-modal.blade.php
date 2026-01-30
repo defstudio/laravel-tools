@@ -8,7 +8,7 @@
                    class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                    autocomplete="off"
                    style="-webkit-text-security: disc;"
-                   wire:model.defer="password_confirmation"
+                   wire:model="password_confirmation"
             >
         </div>
     @endif
@@ -18,7 +18,7 @@
             {{$confirm_text}}
         </x-button>
         
-        <x-button color="secondary" wire:click="$emit('closeModal')" wire:loading.disable>
+        <x-button color="secondary" wire:click="$dispatch('closeModal')" wire:loading.disable>
             {{ $abort_text }}
         </x-button>
     </x-slot>
